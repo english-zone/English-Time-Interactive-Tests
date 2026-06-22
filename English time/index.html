@@ -8,30 +8,22 @@
 </head>
 <body>
     <div class="container">
-        <!-- شعار المعهد (ضع الملف في نفس المجلد) -->
         <img src="logo.png" alt="English Zone Logo" class="logo" onerror="this.style.display='none'">
         
-        <h2>🎧 تشغيل اختبارات English Time</h2>
+        <h2>🎧 تشغيل اختبارات English Time 2</h2>
         
-        <label for="bookSelect">اختر الكتاب:</label>
-        <select id="bookSelect">
-            <option value="ET1">English Time 1</option>
-            <option value="ET2" selected>English Time 2</option>
-            <option value="ET3">English Time 3</option>
-        </select>
-
-        <label for="partSelect">اختر الجزء:</label>
+        <label for="partSelect">اختر القسم (Basic):</label>
         <select id="partSelect">
-            <option value="A">الجزء A (وحدات 1-6 + Midterm)</option>
-            <option value="B">الجزء B (وحدات 7-12 + Final)</option>
+            <option value="A">Basic 2A (وحدات 1-6)</option>
+            <option value="B">Basic 2B (وحدات 7-12)</option>
         </select>
 
-        <label for="testSelect">اختر الاختبار:</label>
-        <select id="testSelect">
-            <!-- سيتم تعبئة هذه القائمة تلقائياً بالوحدات -->
+        <label for="examSelect">اختر الاختبار:</label>
+        <select id="examSelect">
+            <!-- سيتم تعبئة هذه القائمة تلقائياً بأسماء الـ 4 اختبارات -->
         </select>
 
-        <button class="btn-play" onclick="playTest()">🔊 تشغيل الصوت للطلاب</button>
+        <button class="btn-play" onclick="playAudio()">🔊 تشغيل الصوت للطلاب</button>
         
         <audio id="audioPlayer" controls>
             <source id="audioSource" src="" type="audio/mpeg">
@@ -41,42 +33,39 @@
         <div id="statusMsg" class="status-msg"></div>
     </div>
 
-    <!-- السكربت الخاص بالواجهة -->
     <script>
-        // مصفوفة بأسماء الاختبارات (14 اختباراً)
-        const testNames = {
-            "A": ["U1", "U2", "U3", "U4", "U5", "U6", "Midterm"],
-            "B": ["U7", "U8", "U9", "U10", "U11", "U12", "Final_Test"]
+        // قائمة الاختبارات الثابتة بناءً على أسماء ملفات JSON التي أنشأتها
+        const examsList = {
+            "A": ["Exam1", "Exam2", "Exam3", "Exam4"],
+            "B": ["Exam5", "Exam6", "Exam7", "Exam8"]
         };
 
-        const bookSelect = document.getElementById('bookSelect');
         const partSelect = document.getElementById('partSelect');
-        const testSelect = document.getElementById('testSelect');
+        const examSelect = document.getElementById('examSelect');
         const audioPlayer = document.getElementById('audioPlayer');
         const audioSource = document.getElementById('audioSource');
         const statusMsg = document.getElementById('statusMsg');
 
-        // دالة لملء قائمة الاختبارات عند تغيير الجزء
-        function updateTests() {
+        // دالة لتحديث قائمة الاختبارات عند تغيير القسم
+        function updateExams() {
             const part = partSelect.value;
-            testSelect.innerHTML = '';
-            testNames[part].forEach(test => {
+            examSelect.innerHTML = '';
+            examsList[part].forEach((exam, index) => {
                 let option = document.createElement('option');
-                option.value = test;
-                // تحسين عرض الاسم في القائمة
-                option.innerText = test.replace('_', ' ').replace('U', 'Unit ');
-                testSelect.appendChild(option);
+                option.value = exam;
+                option.innerText = `الاختبار ${index + 1}`; // يظهر كـ الاختبار 1، 2، 3، 4
+                examSelect.appendChild(option);
             });
+            document.getElementById('progress').innerText = `تم تحميل Basic 2${part}`;
         }
 
         // الدالة الرئيسية لتشغيل الصوت
-        function playTest() {
-            const book = bookSelect.value;
+        function playAudio() {
             const part = partSelect.value;
-            const test = testSelect.value;
+            const exam = examSelect.value;
             
-            // بناء مسار ملف الصوت بناءً على هيكل المجلدات الذي وضعناه
-            const audioFile = `${book}/audio/${book}_${part}_${test}.mp3`;
+            // بناء مسار ملف الصوت بناءً على الهيكل: English time 2/audio/ET2_A_Exam1.mp3
+            const audioFile = `English time 2/audio/ET2_${part}_${exam}.mp3`;
             audioSource.src = audioFile;
             audioPlayer.load();
 
@@ -85,23 +74,22 @@
 
             audioPlayer.play().then(() => {
                 statusMsg.className = 'status-msg status-success';
-                statusMsg.innerText = `🎵 جاري التشغيل: ${book} - ${part} - ${test}`;
+                statusMsg.innerText = `🎵 جاري التشغيل: Basic 2${part} - ${exam}`;
             }).catch(() => {
-                // إذا لم يجد الصوت، يستخدم Text-to-Speech كبديل
+                // إذا لم يجد الصوت، يستخدم Text-to-Speech كبديل ذكي
                 statusMsg.className = 'status-msg status-error';
-                statusMsg.innerText = `ملف الصوت غير موجود في ${book}/audio/، سيتم قراءة النص بدلاً من ذلك.`;
+                statusMsg.innerText = `ملف الصوت غير موجود في English time 2/audio/، سيتم قراءة النص تلقائياً.`;
                 
-                // تشغيل نطق تجريبي (يمكنك لاحقاً استبدال النص هنا بجلب النص الفعلي من ملفات JSON)
-                const utterance = new SpeechSynthesisUtterance(`Listening test for ${book}, part ${part}, ${test}`);
+                const utterance = new SpeechSynthesisUtterance(`Listening test for Basic 2 ${part}, Exam ${exam}`);
                 utterance.lang = 'en-US';
                 utterance.rate = 0.9;
                 speechSynthesis.speak(utterance);
             });
         }
 
-        // تفعيل القوائم المنسدلة
-        updateTests();
-        partSelect.addEventListener('change', updateTests);
+        // تفعيل القوائم عند التحميل
+        updateExams();
+        partSelect.addEventListener('change', updateExams);
     </script>
 </body>
 </html>
