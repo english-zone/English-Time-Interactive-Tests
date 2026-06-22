@@ -1,0 +1,35 @@
+{
+  "test_id": "ET2_A_Exam3",
+  "title": "Exam 3 (Unit 4 + half Unit 5)",
+  "sections": [
+    {
+      "section_title": "A. Listen and write the number (from Unit 4).",
+      "text": "____ Sure. Hold on.\n____ Hello?\n____ No problem.\n____ Hello. May I speak to Sam, please?",
+      "images": [
+        {"position_in_text": "فوق النص","description": "رسم لطفل يتحدث في الهاتف","suggested_filename": "ET2_A_U4_phone_call"}
+      ]
+    },
+    {
+      "section_title": "B. Does it have long a? Listen and write ✓ or ✗ (from Unit 4).",
+      "text": "1. \n2. \n3. \n4. ",
+      "images": [
+        {"position_in_text": "بجانب الرقم 1","description": "رسم لعنصر يحتوي اسمه على صوت حرف a","suggested_filename": "ET2_A_U4_phonics_1"},
+        {"position_in_text": "بجانب الرقم 2","description": "رسم لعنصر يحتوي اسمه على صوت حرف a","suggested_filename": "ET2_A_U4_phonics_2"},
+        {"position_in_text": "بجانب الرقم 3","description": "رسم لعنصر يحتوي اسمه على صوت حرف a","suggested_filename": "ET2_A_U4_phonics_3"},
+        {"position_in_text": "بجانب الرقم 4","description": "رسم لعنصر يحتوي اسمه على صوت حرف a","suggested_filename": "ET2_A_U4_phonics_4"}
+      ]
+    },
+    {
+      "section_title": "C. Read and match (from Unit 4).",
+      "text": "1. get • • to school\n2. eat • • English\n3. walk • • dressed\n4. study • • breakfast\n5. watch • • a shower\n6. take • • TV",
+      "images": []
+    },
+    {
+      "section_title": "D. Listen and match (from Unit 5).",
+      "text": "1. Where are • • very much\n2. I'm from • • English very well.\n3. Oh. You speak • • France.\n4. Thank you • • you from?",
+      "images": [
+        {"position_in_text": "فوق النص","description": "رسم لشخصيات من جنسيات مختلفة","suggested_filename": "ET2_A_U5_countries_dialogue"}
+      ]
+    }
+  ]
+}
