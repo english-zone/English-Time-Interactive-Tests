@@ -1,0 +1,28 @@
+{
+  "test_id": "ET2_B_Exam5",
+  "title": "Exam 5 (Unit 7 + half Unit 8)",
+  "sections": [
+    {
+      "section_title": "A. Listen and write (from Unit 7).",
+      "text": "1. What _____________________ is it?\n2. It's _____________________.\n3. Blue is my _____________________ color.\n4. Blue is _____________________, _____________________ I like red.",
+      "images": []
+    },
+    {
+      "section_title": "B. Which one has long o? Listen and circle (from Unit 7).",
+      "text": "1. \n2. \n3. \n4. \n5. \n6. ",
+      "images": [
+        {"position_in_text": "بجانب الرقم 1","description": "رسم لثلاثة عناصر (طائرة ورقية، قارب، قدمين)","suggested_filename": "ET2_B_U7_phonics_1"},
+        {"position_in_text": "بجانب الرقم 2","description": "رسم لثلاثة عناصر (نحلة، مطر، معطف)","suggested_filename": "ET2_B_U7_phonics_2"},
+        {"position_in_text": "بجانب الرقم 3","description": "رسم لثلاثة عناصر (نافذة، رقم 5، كعكة)","suggested_filename": "ET2_B_U7_phonics_3"},
+        {"position_in_text": "بجانب الرقم 4","description": "رسم لثلاثة عناصر (ثلج، كوب، طائرة ورقية)","suggested_filename": "ET2_B_U7_phonics_4"},
+        {"position_in_text": "بجانب الرقم 5","description": "رسم لثلاثة عناصر (طفل نائم، ورقة، دراجة)","suggested_filename": "ET2_B_U7_phonics_5"},
+        {"position_in_text": "بجانب الرقم 6","description": "رسم لثلاثة عناصر (منزل، بحيرة، مصباح)","suggested_filename": "ET2_B_U7_phonics_6"}
+      ]
+    },
+    {
+      "section_title": "C. Listen and write the number (from Unit 8).",
+      "text": "____ Yeah, you're right.\n____ Let's clean up.\n____ Okay. Let's get the broom.\n____ Oh, no! What a mess!",
+      "images": []
+    }
+  ]
+}
