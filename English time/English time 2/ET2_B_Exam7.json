@@ -1,0 +1,25 @@
+{
+  "test_id": "ET2_B_Exam7",
+  "title": "Exam 7 (Unit 10 + half Unit 11)",
+  "sections": [
+    {
+      "section_title": "A. Listen and circle (from Unit 10).",
+      "text": "1. Hey! | They're / That's | mine!\n2. No, / Yes, | it isn't. / It's | That's / It's | mine.\n3. Oops! / Uh-oh! | Sorry.\n4. That's | a cow. / okay.",
+      "images": []
+    },
+    {
+      "section_title": "B. Which one has a different vowel sound? Listen and write X (from Unit 10).",
+      "text": "1. \n2. \n3. ",
+      "images": [
+        {"position_in_text": "بجانب الرقم 1","description": "رسم لثلاثة عناصر (سرير، مهد، فقمة)","suggested_filename": "ET2_B_U10_phonics_1"},
+        {"position_in_text": "بجانب الرقم 2","description": "رسم لثلاثة عناصر (قلم، ولد يقرأ، فتاة تأكل)","suggested_filename": "ET2_B_U10_phonics_2"},
+        {"position_in_text": "بجانب الرقم 3","description": "رسم لثلاثة عناصر (سرير، كوب، مهد)","suggested_filename": "ET2_B_U10_phonics_3"}
+      ]
+    },
+    {
+      "section_title": "C. Listen and match (from Unit 11).",
+      "text": "1. Ms. Lee, may I • • course.\n2. Of • • see it. Thanks.\n3. Where • • over there.\n4. It's • • use the bathroom?\n5. I • • is it?",
+      "images": []
+    }
+  ]
+}
