@@ -3,28 +3,28 @@
   "title": "Exam 6 (half Unit 8 + Unit 9)",
   "sections": [
     {
-      "section_title": "A. Does it have long u? Listen and write ✓ or X (from Unit 8).",
+      "section_title": "A. Does it have long u? Listen and write ✓ or X (Unit 8).",
       "text": "1. \n2. \n3. \n4. ",
       "images": [
-        { "position_in_text": "next to number 1", "description": "A small house with smoke coming out of its chimney", "suggested_filename": "ET2_B_U8_phonics_1" },
-        { "position_in_text": "next to number 2", "description": "A tube of toothpaste", "suggested_filename": "ET2_B_U8_phonics_2" },
-        { "position_in_text": "next to number 3", "description": "A bottle of glue", "suggested_filename": "ET2_B_U8_phonics_3" },
-        { "position_in_text": "next to number 4", "description": "A glowing light bulb", "suggested_filename": "ET2_B_U8_phonics_4" }
+        { "position": "right", "description": "House, smoke", "file": "ET2_B_U8_phonics_1" },
+        { "position": "right", "description": "Toothpaste", "file": "ET2_B_U8_phonics_2" },
+        { "position": "right", "description": "Glue", "file": "ET2_B_U8_phonics_3" },
+        { "position": "right", "description": "Light bulb", "file": "ET2_B_U8_phonics_4" }
       ]
     },
     {
-      "section_title": "B. Listen and write (from Unit 9).",
+      "section_title": "B. Listen and write (Unit 9).",
       "text": "1. Uh- _____________________.\n2. What's _____________________?\n3. We're _________. Please _________!\n4. Oh...I can't _____________________.",
       "images": []
     },
     {
-      "section_title": "C. Does it have short a or long a? Listen and circle (from Unit 9).",
+      "section_title": "C. Does it have short a or long a? Listen and circle (Unit 9).",
       "text": "1. \nshort a  long a\n2. \nshort a  long a\n3. \nshort a  long a\n4. \nshort a  long a",
       "images": [
-        { "position_in_text": "next to number 1", "description": "A boy looking sad (sad)", "suggested_filename": "ET2_B_U9_phonics_1" },
-        { "position_in_text": "next to number 2", "description": "A man looking angry holding a hammer (mad)", "suggested_filename": "ET2_B_U9_phonics_2" },
-        { "position_in_text": "next to number 3", "description": "A board game (game)", "suggested_filename": "ET2_B_U9_phonics_3" },
-        { "position_in_text": "next to number 4", "description": "A hat (hat)", "suggested_filename": "ET2_B_U9_phonics_4" }
+        { "position": "right", "description": "Sad boy", "file": "ET2_B_U9_phonics_1" },
+        { "position": "right", "description": "Angry man, hammer", "file": "ET2_B_U9_phonics_2" },
+        { "position": "right", "description": "Game", "file": "ET2_B_U9_phonics_3" },
+        { "position": "right", "description": "Hat", "file": "ET2_B_U9_phonics_4" }
       ]
     }
   ]
