@@ -19,9 +19,7 @@
         </select>
 
         <label for="examSelect">اختر الاختبار:</label>
-        <select id="examSelect">
-            <!-- سيتم تعبئة هذه القائمة تلقائياً بأسماء الـ 4 اختبارات -->
-        </select>
+        <select id="examSelect"></select>
 
         <button class="btn-play" onclick="playAudio()">🔊 تشغيل الصوت للطلاب</button>
         
@@ -34,7 +32,6 @@
     </div>
 
     <script>
-        // قائمة الاختبارات الثابتة بناءً على أسماء ملفات JSON التي أنشأتها
         const examsList = {
             "A": ["Exam1", "Exam2", "Exam3", "Exam4"],
             "B": ["Exam5", "Exam6", "Exam7", "Exam8"]
@@ -46,25 +43,21 @@
         const audioSource = document.getElementById('audioSource');
         const statusMsg = document.getElementById('statusMsg');
 
-        // دالة لتحديث قائمة الاختبارات عند تغيير القسم
         function updateExams() {
             const part = partSelect.value;
             examSelect.innerHTML = '';
             examsList[part].forEach((exam, index) => {
-                let option = document.createElement('option');
+                const option = document.createElement('option');
                 option.value = exam;
-                option.innerText = `الاختبار ${index + 1}`; // يظهر كـ الاختبار 1، 2، 3، 4
+                option.innerText = `الاختبار ${index + 1}`;
                 examSelect.appendChild(option);
             });
             document.getElementById('progress').innerText = `تم تحميل Basic 2${part}`;
         }
 
-        // الدالة الرئيسية لتشغيل الصوت
         function playAudio() {
             const part = partSelect.value;
             const exam = examSelect.value;
-            
-            // بناء مسار ملف الصوت بناءً على الهيكل: English time 2/audio/ET2_A_Exam1.mp3
             const audioFile = `English time 2/audio/ET2_${part}_${exam}.mp3`;
             audioSource.src = audioFile;
             audioPlayer.load();
@@ -76,10 +69,8 @@
                 statusMsg.className = 'status-msg status-success';
                 statusMsg.innerText = `🎵 جاري التشغيل: Basic 2${part} - ${exam}`;
             }).catch(() => {
-                // إذا لم يجد الصوت، يستخدم Text-to-Speech كبديل ذكي
                 statusMsg.className = 'status-msg status-error';
-                statusMsg.innerText = `ملف الصوت غير موجود في English time 2/audio/، سيتم قراءة النص تلقائياً.`;
-                
+                statusMsg.innerText = `ملف الصوت غير موجود، سيتم قراءة النص تلقائياً.`;
                 const utterance = new SpeechSynthesisUtterance(`Listening test for Basic 2 ${part}, Exam ${exam}`);
                 utterance.lang = 'en-US';
                 utterance.rate = 0.9;
@@ -87,7 +78,6 @@
             });
         }
 
-        // تفعيل القوائم عند التحميل
         updateExams();
         partSelect.addEventListener('change', updateExams);
     </script>
