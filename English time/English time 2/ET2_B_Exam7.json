@@ -11,9 +11,9 @@
       "section_title": "B. Which one has a different vowel sound? Listen and write X (from Unit 10).",
       "text": "1. \n2. \n3. ",
       "images": [
-        {"position_in_text": "بجانب الرقم 1","description": "رسم لثلاثة عناصر (سرير، مهد، فقمة)","suggested_filename": "ET2_B_U10_phonics_1"},
-        {"position_in_text": "بجانب الرقم 2","description": "رسم لثلاثة عناصر (قلم، ولد يقرأ، فتاة تأكل)","suggested_filename": "ET2_B_U10_phonics_2"},
-        {"position_in_text": "بجانب الرقم 3","description": "رسم لثلاثة عناصر (سرير، كوب، مهد)","suggested_filename": "ET2_B_U10_phonics_3"}
+        { "position_in_text": "next to number 1", "description": "Three objects (bed, crib, seal)", "suggested_filename": "ET2_B_U10_phonics_1" },
+        { "position_in_text": "next to number 2", "description": "Three objects (pen, a boy reading, a girl eating)", "suggested_filename": "ET2_B_U10_phonics_2" },
+        { "position_in_text": "next to number 3", "description": "Three objects (bed, cup, crib)", "suggested_filename": "ET2_B_U10_phonics_3" }
       ]
     },
     {
