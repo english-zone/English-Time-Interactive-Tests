@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>English Time 2 - اختبارات A4</title>
+    <title>English Time 2 - Tests</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
@@ -32,6 +32,7 @@
         }
         .no-print button:hover { background: #0056b3; }
 
+        /* A4 page */
         .a4-page {
             width: 210mm;
             min-height: 297mm;
@@ -41,6 +42,8 @@
             margin-bottom: 30px;
             page-break-after: always;
             line-height: 1.7;
+            direction: ltr;
+            text-align: left;
         }
         .a4-page:last-child { page-break-after: auto; }
 
@@ -73,9 +76,8 @@
             font-size: 1.1rem;
             margin-bottom: 8px;
             color: #333;
-            border-right: 4px solid #007bff;
-            padding-right: 8px;
-            text-align: right;
+            border-left: 4px solid #007bff;  /* left side for LTR */
+            padding-left: 8px;
         }
 
         .section-content {
@@ -85,7 +87,6 @@
             align-items: flex-start;
         }
 
-        /* النص الإنجليزي سيكون LTR حتى داخل الصفحة العربية */
         .section-text {
             flex: 2;
             min-width: 250px;
@@ -103,8 +104,8 @@
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
-            justify-content: center;
-            align-items: center;
+            justify-content: flex-start;
+            align-items: flex-start;
         }
 
         .image-item {
@@ -142,13 +143,13 @@
             <option value="B">Basic 2B</option>
         </select>
         <select id="examSelect">
-            <option value="1">الاختبار 1</option>
-            <option value="2">الاختبار 2</option>
-            <option value="3">الاختبار 3</option>
-            <option value="4">الاختبار 4</option>
+            <option value="1">Exam 1</option>
+            <option value="2">Exam 2</option>
+            <option value="3">Exam 3</option>
+            <option value="4">Exam 4</option>
         </select>
-        <button onclick="loadAndRender()">عرض الاختبار</button>
-        <button onclick="window.print()">🖨️ طباعة</button>
+        <button onclick="loadAndRender()">Show Exam</button>
+        <button onclick="window.print()">🖨️ Print</button>
     </div>
 
     <div id="examContainer"></div>
@@ -166,15 +167,15 @@
             const part = document.getElementById('partSelect').value;
             const num = document.getElementById('examSelect').value;
             const container = document.getElementById('examContainer');
-            container.innerHTML = '<p style="text-align:center;">جاري التحميل...</p>';
+            container.innerHTML = '<p style="text-align:center;">Loading...</p>';
 
             try {
                 const res = await fetch(getJSONPath(part, num));
-                if (!res.ok) throw new Error('ملف غير موجود');
+                if (!res.ok) throw new Error('File not found');
                 const exam = await res.json();
                 renderExam(exam, container);
             } catch (e) {
-                container.innerHTML = `<p style="color:red;">فشل التحميل: ${e.message}</p>`;
+                container.innerHTML = `<p style="color:red;">Failed to load: ${e.message}</p>`;
             }
         }
 
@@ -187,7 +188,7 @@
                 html += `<div class="section">`;
                 html += `<div class="section-title">${section.section_title}</div>`;
                 html += `<div class="section-content">`;
-                // النص الإنجليزي مع direction: ltr
+                // Text content (LTR)
                 html += `<div class="section-text">${section.text.replace(/\n/g, '<br>')}</div>`;
                 
                 if (section.images && section.images.length > 0) {
