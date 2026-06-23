@@ -6,17 +6,17 @@
       "section_title": "A. Listen and write the number (Unit 4).",
       "text": "____ Sure. Hold on.\n____ Hello?\n____ No problem.\n____ Hello. May I speak to Sam, please?",
       "images": [
-        { "position": "above", "file": "ET2_A_U4_phone_call" }
+        { "suggested_filename": "ET2_A_U4_phone_call", "position": "above" }
       ]
     },
     {
       "section_title": "B. Does it have long a? Listen and write ✓ or ✗ (Unit 4).",
       "text": "1. \n2. \n3. \n4. ",
       "images": [
-        { "position": "right", "file": "ET2_A_U4_phonics_1" },
-        { "position": "right", "file": "ET2_A_U4_phonics_2" },
-        { "position": "right", "file": "ET2_A_U4_phonics_3" },
-        { "position": "right", "file": "ET2_A_U4_phonics_4" }
+        { "suggested_filename": "ET2_A_U4_phonics_1", "position": "right" },
+        { "suggested_filename": "ET2_A_U4_phonics_2", "position": "right" },
+        { "suggested_filename": "ET2_A_U4_phonics_3", "position": "right" },
+        { "suggested_filename": "ET2_A_U4_phonics_4", "position": "right" }
       ]
     },
     {
@@ -28,7 +28,7 @@
       "section_title": "D. Listen and match (Unit 5).",
       "text": "1. Where are • • very much\n2. I'm from • • English very well.\n3. Oh. You speak • • France.\n4. Thank you • • you from?",
       "images": [
-        { "position": "above", "file": "ET2_A_U5_countries_dialogue" }
+        { "suggested_filename": "ET2_A_U5_countries_dialogue", "position": "above" }
       ]
     }
   ]
