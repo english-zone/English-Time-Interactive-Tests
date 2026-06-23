@@ -1,40 +1,93 @@
 {
   "test_id": "ET2_A_Exam4",
-  "title": "Exam 4 (half Unit 5 + Unit 6)",
+  "title": "Midterm Test (Units 1-6)",
   "sections": [
     {
-      "section_title": "A. Do they both have long e? Listen and write ✓ or ✗ (Unit 5).",
-      "text": "1. \n2. \n3. ",
+      "section_title": "A. Listen and circle ✓ or ✗.",
+      "text": "1. ✓ ✗\n2. ✓ ✗\n3. ✓ ✗",
       "images": [
-        { "suggested_filename": "ET2_A_U5_phonics_1", "position": "right" },
-        { "suggested_filename": "ET2_A_U5_phonics_2", "position": "right" },
-        { "suggested_filename": "ET2_A_U5_phonics_3", "position": "right" }
+        { "suggested_filename": "ET2_A_Mid_gift", "position": "above" },
+        { "suggested_filename": "ET2_A_Mid_phone", "position": "above" },
+        { "suggested_filename": "ET2_A_Mid_map", "position": "above" }
       ]
     },
     {
-      "section_title": "B. Look and circle (Unit 5).",
-      "text": "1. three / thirteen / thirty\n2. twenty / twelve / thirty\n3. forty-six / fifty-eight / forty-eight",
+      "section_title": "B. Listen and match.",
+      "text": "1. How old are you? • • I'm from France.\n2. Is today Monday? • • I'm ten.\n3. Where are you from? • • I live in Oakville.\n4. Where do you live? • • No, it's Tuesday.\n5. May I speak to Sam? • • Thank you very much.\n6. You speak English very well. • • Sure. Hold on.",
+      "images": []
+    },
+    {
+      "section_title": "C. Listen and write.",
+      "text": "[Box 1]\n1. _________ do you _________?\n2. I live _________ Oakville.\n3. Oh _________? Me, too.\n4. I like it. It's a _________ place.\n\n[Box 2]\n1. Is today _________?\n2. No, it's _________.\n3. Yay! _________ birthday is on _________.\n4. _________.",
+      "images": []
+    },
+    {
+      "section_title": "D. Listen and write.",
+      "text": "1. __et\n2. __at\n3. __amb\n4. __ueen\n5. __un\n6. __o-yo\n7. bo__\n8. du__\n9. __emon",
       "images": [
-        { "suggested_filename": "ET2_A_U5_number_1", "position": "right" },
-        { "suggested_filename": "ET2_A_U5_number_2", "position": "right" },
-        { "suggested_filename": "ET2_A_U5_number_3", "position": "right" }
+        { "suggested_filename": "ET2_A_Mid_jet", "position": "right" },
+        { "suggested_filename": "ET2_A_Mid_cat", "position": "right" },
+        { "suggested_filename": "ET2_A_Mid_lamb", "position": "right" },
+        { "suggested_filename": "ET2_A_Mid_queen", "position": "right" },
+        { "suggested_filename": "ET2_A_Mid_run", "position": "right" },
+        { "suggested_filename": "ET2_A_Mid_yoyo", "position": "right" },
+        { "suggested_filename": "ET2_A_Mid_box", "position": "right" },
+        { "suggested_filename": "ET2_A_Mid_duck", "position": "right" },
+        { "suggested_filename": "ET2_A_Mid_lemon", "position": "right" }
       ]
     },
     {
-      "section_title": "C. Listen and circle (Unit 6).",
-      "text": "1. (Where / What) do (they / you) live?\n2. (You / I) live (in / on) Oakville.\n3. (Oh / Yes) really? (You, / Me.) too.\n4. (I) (like / love) it. It's a (nice / nine) place.",
+      "section_title": "E. Listen and circle.",
+      "text": "1. late / light\n2. feet / fight\n3. lake / like\n4. take / tea\n5. Kate / kite\n6. May / meat\n7. night / neat\n8. read / raid\n9. bike / beak",
+      "images": []
+    },
+    {
+      "section_title": "F. Look and write.",
+      "text": "1. ___________________________________\n2. ___________________________________\n3. ___________________________________\n4. ___________________________________\n5. ___________________________________\n6. ___________________________________",
       "images": [
-        { "suggested_filename": "ET2_A_U6_neighborhood_dialogue", "position": "above" }
+        { "suggested_filename": "ET2_A_Mid_family", "position": "left" }
       ]
     },
     {
-      "section_title": "D. Does it have long i? Listen and write ✓ or ✗ (Unit 6).",
-      "text": "1. \n2. \n3. \n4. ",
+      "section_title": "G. Look and match.",
+      "text": "1. •\n2. •\n3. •\n4. •\n5. •\n\n(sing) (get dressed) (draw) (study English) (write)",
       "images": [
-        { "suggested_filename": "ET2_A_U6_phonics_1", "position": "right" },
-        { "suggested_filename": "ET2_A_U6_phonics_2", "position": "right" },
-        { "suggested_filename": "ET2_A_U6_phonics_3", "position": "right" },
-        { "suggested_filename": "ET2_A_U6_phonics_4", "position": "right" }
+        { "suggested_filename": "ET2_A_Mid_sing", "position": "above" },
+        { "suggested_filename": "ET2_A_Mid_get_dressed", "position": "above" },
+        { "suggested_filename": "ET2_A_Mid_draw", "position": "above" },
+        { "suggested_filename": "ET2_A_Mid_study_English", "position": "above" },
+        { "suggested_filename": "ET2_A_Mid_write", "position": "above" }
+      ]
+    },
+    {
+      "section_title": "H. Read and write the number.",
+      "text": "1. fifty-eight [__]\n2. forty-four [__]\n3. thirteen [__]\n4. eighteen [__]\n5. twenty-six [__]\n6. fifty [__]",
+      "images": [
+        { "suggested_filename": "ET2_A_Mid_star_frame", "position": "above" }
+      ]
+    },
+    {
+      "section_title": "I. Unscramble and write.",
+      "text": "1. my / She's / sister / .\n___________________________________\n2. flowers / are / . / Those / yellow\n___________________________________\n3. taking / . / He's / shower / a\n___________________________________\n4. school / . / to / We're / walking\n___________________________________\n5. is / time / ? / What / it\n___________________________________\n6. isn't / reading / She / .\n___________________________________",
+      "images": []
+    },
+    {
+      "section_title": "J. Look and write.",
+      "text": "1. What time is it?\n___________________________________\n2. Who's he?\n___________________________________\n3. What's she doing?\n___________________________________\n4. I'm ___________________________________\n5. They're ___________________________________\n6. ___________________________ orange.",
+      "images": [
+        { "suggested_filename": "ET2_A_Mid_clock", "position": "above" },
+        { "suggested_filename": "ET2_A_Mid_man_reading", "position": "above" },
+        { "suggested_filename": "ET2_A_Mid_watching_tv", "position": "above" },
+        { "suggested_filename": "ET2_A_Mid_race_winner", "position": "above" },
+        { "suggested_filename": "ET2_A_Mid_group_talking", "position": "above" },
+        { "suggested_filename": "ET2_A_Mid_flowers", "position": "above" }
+      ]
+    },
+    {
+      "section_title": "K. Unscramble and write. Then color.",
+      "text": "1. [ elbu ] -> ___________________\n2. [ ehitw ] -> ___________________\n3. [ der ] -> ___________________\n4. [ rwnob ] -> ___________________",
+      "images": [
+        { "suggested_filename": "ET2_A_Mid_paint_tube", "position": "above" }
       ]
     }
   ]
