@@ -3,40 +3,32 @@
   "title": "Exam 3 (Unit 4 + half Unit 5)",
   "sections": [
     {
-      "section_title": "A. Listen and write the number (from Unit 4).",
+      "section_title": "A. Listen and write the number (Unit 4).",
       "text": "____ Sure. Hold on.\n____ Hello?\n____ No problem.\n____ Hello. May I speak to Sam, please?",
       "images": [
-        {
-          "position_in_text": "above the text",
-          "description": "A child talking on the phone",
-          "suggested_filename": "ET2_A_U4_phone_call"
-        }
+        { "position": "above", "description": "Phone call", "file": "ET2_A_U4_phone_call" }
       ]
     },
     {
-      "section_title": "B. Does it have long a? Listen and write ✓ or ✗ (from Unit 4).",
+      "section_title": "B. Does it have long a? Listen and write ✓ or ✗ (Unit 4).",
       "text": "1. \n2. \n3. \n4. ",
       "images": [
-        { "position_in_text": "next to number 1", "description": "An object whose name contains the letter a sound", "suggested_filename": "ET2_A_U4_phonics_1" },
-        { "position_in_text": "next to number 2", "description": "An object whose name contains the letter a sound", "suggested_filename": "ET2_A_U4_phonics_2" },
-        { "position_in_text": "next to number 3", "description": "An object whose name contains the letter a sound", "suggested_filename": "ET2_A_U4_phonics_3" },
-        { "position_in_text": "next to number 4", "description": "An object whose name contains the letter a sound", "suggested_filename": "ET2_A_U4_phonics_4" }
+        { "position": "right", "description": "Long a sound", "file": "ET2_A_U4_phonics_1" },
+        { "position": "right", "description": "Long a sound", "file": "ET2_A_U4_phonics_2" },
+        { "position": "right", "description": "Long a sound", "file": "ET2_A_U4_phonics_3" },
+        { "position": "right", "description": "Long a sound", "file": "ET2_A_U4_phonics_4" }
       ]
     },
     {
-      "section_title": "C. Read and match (from Unit 4).",
+      "section_title": "C. Read and match (Unit 4).",
       "text": "1. get • • to school\n2. eat • • English\n3. walk • • dressed\n4. study • • breakfast\n5. watch • • a shower\n6. take • • TV",
       "images": []
     },
     {
-      "section_title": "D. Listen and match (from Unit 5).",
+      "section_title": "D. Listen and match (Unit 5).",
       "text": "1. Where are • • very much\n2. I'm from • • English very well.\n3. Oh. You speak • • France.\n4. Thank you • • you from?",
       "images": [
-        {
-          "position_in_text": "above the text",
-          "description": "Characters from different nationalities",
-          "suggested_filename": "ET2_A_U5_countries_dialogue"
-        }
+        { "position": "above", "description": "Countries dialogue", "file": "ET2_A_U5_countries_dialogue" }
       ]
     }
   ]
