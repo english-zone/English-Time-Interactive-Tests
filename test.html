@@ -150,12 +150,17 @@
         const printBtn = document.getElementById('printBtn');
         const container = document.getElementById('examContainer');
 
+        // ✅ المسار الصحيح مع تشفير المسافات تلقائياً
         function getJSONPath(part, num) {
-            return `English%20time%202/ET2_${part}_Exam${num}.json`;
+            const folder = 'English time 2';  // اسم المجلد الحقيقي
+            const filename = `ET2_${part}_Exam${num}.json`;
+            // encodeURI يحول المسافات إلى %20 بشكل آمن
+            return encodeURI(`${folder}/${filename}`);
         }
 
         function getImagePath(filename) {
-            return `English%20time%202/images/${filename}.jpg`;
+            const folder = 'English time 2/images';
+            return encodeURI(`${folder}/${filename}.jpg`);
         }
 
         async function loadAndRender() {
@@ -166,16 +171,26 @@
             showBtn.textContent = 'Loading...';
             container.innerHTML = '<p style="text-align:center;">Loading exam, please wait...</p>';
 
+            const url = getJSONPath(part, num);
+            console.log('Fetching:', url);
+
             try {
-                const url = getJSONPath(part, num);
-                console.log('Fetching:', url);
                 const response = await fetch(url);
-                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                if (!response.ok) {
+                    const statusText = `${response.status} ${response.statusText}`;
+                    throw new Error(`HTTP ${statusText} — ${url}`);
+                }
                 const exam = await response.json();
+                console.log('Exam loaded successfully:', exam.title);
                 renderExam(exam);
             } catch (error) {
-                console.error(error);
-                container.innerHTML = `<p style="color:red; text-align:center;">❌ Failed to load exam. ${error.message}</p>`;
+                console.error('Fetch error:', error);
+                container.innerHTML = `
+                    <p style="color:red; text-align:center;">
+                        ❌ Failed to load exam.<br>
+                        <small>Path: ${url}</small><br>
+                        <small>Error: ${error.message}</small>
+                    </p>`;
             } finally {
                 showBtn.disabled = false;
                 showBtn.textContent = 'Show Exam';
@@ -194,16 +209,15 @@
                 const images = section.images || [];
                 const allLines = section.text.split('\n');
 
-                // الصور التي مكانها "above" نعرضها فوق القسم
+                // الصور التي مكانها "above"
                 const aboveImg = images.find(img => img.position === 'above');
                 if (aboveImg) {
                     html += `<img src="${getImagePath(aboveImg.suggested_filename)}" class="section-image-above" onerror="this.style.display='none'" alt="">`;
                 }
 
-                // نأخذ الصور المتبقية (اللي موضعها "right" أو بدون position)
                 const remainingImages = images.filter(img => img.position !== 'above');
 
-                // نستخرج الأسطر التي تبدأ برقم متبوع بنقطة أو بمسافة (مثل "1. " أو "1 ")
+                // استخراج الأسطر المرقمة
                 const numberedLines = [];
                 const otherLines = [];
                 allLines.forEach(line => {
@@ -214,7 +228,7 @@
                     }
                 });
 
-                // إذا تطابق عدد الصور مع الأسطر المرقمة، ندمج كل سطر مع صورته
+                // وصل الصور بالأسطر المرقمة إذا تطابق العدد
                 if (remainingImages.length === numberedLines.length && numberedLines.length > 0) {
                     numberedLines.forEach((line, idx) => {
                         html += `<div class="question-line">`;
@@ -222,12 +236,10 @@
                         html += `<img src="${getImagePath(remainingImages[idx].suggested_filename)}" class="question-image" onerror="this.style.display='none'" alt="">`;
                         html += `</div>`;
                     });
-                    // نعرض الأسطر الأخرى (غير المرقمة) أسفلها بدون صور
                     if (otherLines.length > 0) {
                         html += `<div class="question-text" style="margin-top:6px;">${otherLines.join('<br>')}</div>`;
                     }
                 } else {
-                    // خطة بديلة: نعرض النص كاملاً ثم الصور إن وجدت
                     html += `<div class="question-text">${section.text.replace(/\n/g, '<br>')}</div>`;
                     if (remainingImages.length > 0) {
                         html += `<div style="display:flex; gap:8px; margin-top:6px; flex-wrap:wrap;">`;
@@ -238,7 +250,7 @@
                     }
                 }
 
-                html += `</div>`; // end section
+                html += `</div>`;
             });
 
             html += `<footer>English Time 2 © 2025</footer>`;
