@@ -6,10 +6,10 @@
       "section_title": "A. Does it have long u? Listen and write ✓ or X (from Unit 8).",
       "text": "1. \n2. \n3. \n4. ",
       "images": [
-        {"position_in_text": "بجانب الرقم 1","description": "رسم لمنزل صغير يخرج من مدخنته دخان","suggested_filename": "ET2_B_U8_phonics_1"},
-        {"position_in_text": "بجانب الرقم 2","description": "رسم لأنبوب معجون أسنان","suggested_filename": "ET2_B_U8_phonics_2"},
-        {"position_in_text": "بجانب الرقم 3","description": "رسم لعلبة صمغ/غراء","suggested_filename": "ET2_B_U8_phonics_3"},
-        {"position_in_text": "بجانب الرقم 4","description": "رسم لمصباح كهربائي مضيء","suggested_filename": "ET2_B_U8_phonics_4"}
+        { "position_in_text": "next to number 1", "description": "A small house with smoke coming out of its chimney", "suggested_filename": "ET2_B_U8_phonics_1" },
+        { "position_in_text": "next to number 2", "description": "A tube of toothpaste", "suggested_filename": "ET2_B_U8_phonics_2" },
+        { "position_in_text": "next to number 3", "description": "A bottle of glue", "suggested_filename": "ET2_B_U8_phonics_3" },
+        { "position_in_text": "next to number 4", "description": "A glowing light bulb", "suggested_filename": "ET2_B_U8_phonics_4" }
       ]
     },
     {
@@ -21,10 +21,10 @@
       "section_title": "C. Does it have short a or long a? Listen and circle (from Unit 9).",
       "text": "1. \nshort a  long a\n2. \nshort a  long a\n3. \nshort a  long a\n4. \nshort a  long a",
       "images": [
-        {"position_in_text": "بجانب الرقم 1","description": "رسم لوجه ولد يبدو حزيناً (sad)","suggested_filename": "ET2_B_U9_phonics_1"},
-        {"position_in_text": "بجانب الرقم 2","description": "رسم لرجل يبدو غاضباً وهو يمسك بمطرقة (mad)","suggested_filename": "ET2_B_U9_phonics_2"},
-        {"position_in_text": "بجانب الرقم 3","description": "رسم للعبة لوحية (game)","suggested_filename": "ET2_B_U9_phonics_3"},
-        {"position_in_text": "بجانب الرقم 4","description": "رسم لقبعة (hat)","suggested_filename": "ET2_B_U9_phonics_4"}
+        { "position_in_text": "next to number 1", "description": "A boy looking sad (sad)", "suggested_filename": "ET2_B_U9_phonics_1" },
+        { "position_in_text": "next to number 2", "description": "A man looking angry holding a hammer (mad)", "suggested_filename": "ET2_B_U9_phonics_2" },
+        { "position_in_text": "next to number 3", "description": "A board game (game)", "suggested_filename": "ET2_B_U9_phonics_3" },
+        { "position_in_text": "next to number 4", "description": "A hat (hat)", "suggested_filename": "ET2_B_U9_phonics_4" }
       ]
     }
   ]
