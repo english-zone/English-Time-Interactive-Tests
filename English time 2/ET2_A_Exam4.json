@@ -6,35 +6,35 @@
       "section_title": "A. Do they both have long e? Listen and write ✓ or ✗ (Unit 5).",
       "text": "1. \n2. \n3. ",
       "images": [
-        { "position": "right", "file": "ET2_A_U5_phonics_1" },
-        { "position": "right", "file": "ET2_A_U5_phonics_2" },
-        { "position": "right", "file": "ET2_A_U5_phonics_3" }
+        { "suggested_filename": "ET2_A_U5_phonics_1", "position": "right" },
+        { "suggested_filename": "ET2_A_U5_phonics_2", "position": "right" },
+        { "suggested_filename": "ET2_A_U5_phonics_3", "position": "right" }
       ]
     },
     {
       "section_title": "B. Look and circle (Unit 5).",
       "text": "1. three / thirteen / thirty\n2. twenty / twelve / thirty\n3. forty-six / fifty-eight / forty-eight",
       "images": [
-        { "position": "right", "file": "ET2_A_U5_number_1" },
-        { "position": "right", "file": "ET2_A_U5_number_2" },
-        { "position": "right", "file": "ET2_A_U5_number_3" }
+        { "suggested_filename": "ET2_A_U5_number_1", "position": "right" },
+        { "suggested_filename": "ET2_A_U5_number_2", "position": "right" },
+        { "suggested_filename": "ET2_A_U5_number_3", "position": "right" }
       ]
     },
     {
       "section_title": "C. Listen and circle (Unit 6).",
       "text": "1. (Where / What) do (they / you) live?\n2. (You / I) live (in / on) Oakville.\n3. (Oh / Yes) really? (You, / Me.) too.\n4. (I) (like / love) it. It's a (nice / nine) place.",
       "images": [
-        { "position": "above", "file": "ET2_A_U6_neighborhood_dialogue" }
+        { "suggested_filename": "ET2_A_U6_neighborhood_dialogue", "position": "above" }
       ]
     },
     {
       "section_title": "D. Does it have long i? Listen and write ✓ or ✗ (Unit 6).",
       "text": "1. \n2. \n3. \n4. ",
       "images": [
-        { "position": "right", "file": "ET2_A_U6_phonics_1" },
-        { "position": "right", "file": "ET2_A_U6_phonics_2" },
-        { "position": "right", "file": "ET2_A_U6_phonics_3" },
-        { "position": "right", "file": "ET2_A_U6_phonics_4" }
+        { "suggested_filename": "ET2_A_U6_phonics_1", "position": "right" },
+        { "suggested_filename": "ET2_A_U6_phonics_2", "position": "right" },
+        { "suggested_filename": "ET2_A_U6_phonics_3", "position": "right" },
+        { "suggested_filename": "ET2_A_U6_phonics_4", "position": "right" }
       ]
     }
   ]
