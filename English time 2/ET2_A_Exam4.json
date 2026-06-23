@@ -3,38 +3,38 @@
   "title": "Exam 4 (half Unit 5 + Unit 6)",
   "sections": [
     {
-      "section_title": "A. Do they both have long e? Listen and write ✓ or ✗ (from Unit 5).",
+      "section_title": "A. Do they both have long e? Listen and write ✓ or ✗ (Unit 5).",
       "text": "1. \n2. \n3. ",
       "images": [
-        { "position_in_text": "next to number 1", "description": "Two objects whose names contain the letter e sound", "suggested_filename": "ET2_A_U5_phonics_1" },
-        { "position_in_text": "next to number 2", "description": "Two objects whose names contain the letter e sound", "suggested_filename": "ET2_A_U5_phonics_2" },
-        { "position_in_text": "next to number 3", "description": "Two objects whose names contain the letter e sound", "suggested_filename": "ET2_A_U5_phonics_3" }
+        { "position": "right", "description": "Two objects with e", "file": "ET2_A_U5_phonics_1" },
+        { "position": "right", "description": "Two objects with e", "file": "ET2_A_U5_phonics_2" },
+        { "position": "right", "description": "Two objects with e", "file": "ET2_A_U5_phonics_3" }
       ]
     },
     {
-      "section_title": "B. Look and circle (from Unit 5).",
+      "section_title": "B. Look and circle (Unit 5).",
       "text": "1. three / thirteen / thirty\n2. twenty / twelve / thirty\n3. forty-six / fifty-eight / forty-eight",
       "images": [
-        { "position_in_text": "next to question 1", "description": "A picture showing a specific number", "suggested_filename": "ET2_A_U5_number_1" },
-        { "position_in_text": "next to question 2", "description": "A picture showing a specific number", "suggested_filename": "ET2_A_U5_number_2" },
-        { "position_in_text": "next to question 3", "description": "A picture showing a specific number", "suggested_filename": "ET2_A_U5_number_3" }
+        { "position": "right", "description": "Number", "file": "ET2_A_U5_number_1" },
+        { "position": "right", "description": "Number", "file": "ET2_A_U5_number_2" },
+        { "position": "right", "description": "Number", "file": "ET2_A_U5_number_3" }
       ]
     },
     {
-      "section_title": "C. Listen and circle (from Unit 6).",
+      "section_title": "C. Listen and circle (Unit 6).",
       "text": "1. (Where / What) do (they / you) live?\n2. (You / I) live (in / on) Oakville.\n3. (Oh / Yes) really? (You, / Me.) too.\n4. (I) (like / love) it. It's a (nice / nine) place.",
       "images": [
-        { "position_in_text": "above the text", "description": "Two children talking about where they live", "suggested_filename": "ET2_A_U6_neighborhood_dialogue" }
+        { "position": "above", "description": "Neighborhood dialogue", "file": "ET2_A_U6_neighborhood_dialogue" }
       ]
     },
     {
-      "section_title": "D. Does it have long i? Listen and write ✓ or ✗ (from Unit 6).",
+      "section_title": "D. Does it have long i? Listen and write ✓ or ✗ (Unit 6).",
       "text": "1. \n2. \n3. \n4. ",
       "images": [
-        { "position_in_text": "next to number 1", "description": "An object whose name contains the letter i sound", "suggested_filename": "ET2_A_U6_phonics_1" },
-        { "position_in_text": "next to number 2", "description": "An object whose name contains the letter i sound", "suggested_filename": "ET2_A_U6_phonics_2" },
-        { "position_in_text": "next to number 3", "description": "An object whose name contains the letter i sound", "suggested_filename": "ET2_A_U6_phonics_3" },
-        { "position_in_text": "next to number 4", "description": "An object whose name contains the letter i sound", "suggested_filename": "ET2_A_U6_phonics_4" }
+        { "position": "right", "description": "Long i sound", "file": "ET2_A_U6_phonics_1" },
+        { "position": "right", "description": "Long i sound", "file": "ET2_A_U6_phonics_2" },
+        { "position": "right", "description": "Long i sound", "file": "ET2_A_U6_phonics_3" },
+        { "position": "right", "description": "Long i sound", "file": "ET2_A_U6_phonics_4" }
       ]
     }
   ]
