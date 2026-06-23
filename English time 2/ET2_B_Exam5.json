@@ -3,24 +3,24 @@
   "title": "Exam 5 (Unit 7 + half Unit 8)",
   "sections": [
     {
-      "section_title": "A. Listen and write (from Unit 7).",
+      "section_title": "A. Listen and write (Unit 7).",
       "text": "1. What _____________________ is it?\n2. It's _____________________.\n3. Blue is my _____________________ color.\n4. Blue is _____________________, _____________________ I like red.",
       "images": []
     },
     {
-      "section_title": "B. Which one has long o? Listen and circle (from Unit 7).",
+      "section_title": "B. Which one has long o? Listen and circle (Unit 7).",
       "text": "1. \n2. \n3. \n4. \n5. \n6. ",
       "images": [
-        { "position_in_text": "next to number 1", "description": "Three objects (kite, boat, feet)", "suggested_filename": "ET2_B_U7_phonics_1" },
-        { "position_in_text": "next to number 2", "description": "Three objects (bee, rain, coat)", "suggested_filename": "ET2_B_U7_phonics_2" },
-        { "position_in_text": "next to number 3", "description": "Three objects (window, number 5, cake)", "suggested_filename": "ET2_B_U7_phonics_3" },
-        { "position_in_text": "next to number 4", "description": "Three objects (snow, cup, kite)", "suggested_filename": "ET2_B_U7_phonics_4" },
-        { "position_in_text": "next to number 5", "description": "Three objects (sleeping child, paper, bike)", "suggested_filename": "ET2_B_U7_phonics_5" },
-        { "position_in_text": "next to number 6", "description": "Three objects (house, lake, lamp)", "suggested_filename": "ET2_B_U7_phonics_6" }
+        { "position": "right", "description": "Kite, boat, feet", "file": "ET2_B_U7_phonics_1" },
+        { "position": "right", "description": "Bee, rain, coat", "file": "ET2_B_U7_phonics_2" },
+        { "position": "right", "description": "Window, 5, cake", "file": "ET2_B_U7_phonics_3" },
+        { "position": "right", "description": "Snow, cup, kite", "file": "ET2_B_U7_phonics_4" },
+        { "position": "right", "description": "Sleeping, paper, bike", "file": "ET2_B_U7_phonics_5" },
+        { "position": "right", "description": "House, lake, lamp", "file": "ET2_B_U7_phonics_6" }
       ]
     },
     {
-      "section_title": "C. Listen and write the number (from Unit 8).",
+      "section_title": "C. Listen and write the number (Unit 8).",
       "text": "____ Yeah, you're right.\n____ Let's clean up.\n____ Okay. Let's get the broom.\n____ Oh, no! What a mess!",
       "images": []
     }
