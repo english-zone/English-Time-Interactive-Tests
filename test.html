@@ -31,8 +31,8 @@
             font-weight: bold;
         }
         .no-print button:hover { background: #0056b3; }
+        .no-print button:disabled { background: #6c757d; cursor: not-allowed; }
 
-        /* A4 page */
         .a4-page {
             width: 210mm;
             min-height: 297mm;
@@ -80,7 +80,6 @@
             padding-left: 8px;
         }
 
-        /* Container for each question line + its image */
         .question-line {
             display: flex;
             align-items: center;
@@ -102,7 +101,6 @@
             background: white;
         }
 
-        /* When image is above the whole section */
         .section-image-above {
             display: block;
             margin: 0 auto 10px;
@@ -137,14 +135,25 @@
             <option value="3">Exam 3</option>
             <option value="4">Exam 4</option>
         </select>
-        <button onclick="loadAndRender()">Show Exam</button>
-        <button onclick="window.print()">🖨️ Print</button>
+        <button id="showExamBtn">Show Exam</button>
+        <button id="printBtn">🖨️ Print</button>
     </div>
 
-    <div id="examContainer"></div>
+    <div id="examContainer">
+        <p style="text-align:center; color:#6c757d;">Select an exam and click "Show Exam".</p>
+    </div>
 
     <script>
+        // ---------- DOM elements ----------
+        const partSelect = document.getElementById('partSelect');
+        const examSelect = document.getElementById('examSelect');
+        const showBtn = document.getElementById('showExamBtn');
+        const printBtn = document.getElementById('printBtn');
+        const container = document.getElementById('examContainer');
+
+        // ---------- Helper functions ----------
         function getJSONPath(part, num) {
+            // Use encoded path for spaces
             return `English%20time%202/ET2_${part}_Exam${num}.json`;
         }
 
@@ -152,25 +161,37 @@
             return `English%20time%202/images/${filename}.jpg`;
         }
 
+        // ---------- Main render ----------
         async function loadAndRender() {
-            const part = document.getElementById('partSelect').value;
-            const num = document.getElementById('examSelect').value;
-            const container = document.getElementById('examContainer');
-            container.innerHTML = '<p style="text-align:center;">Loading...</p>';
+            const part = partSelect.value;
+            const num = examSelect.value;
+
+            showBtn.disabled = true;
+            showBtn.textContent = 'Loading...';
+            container.innerHTML = '<p style="text-align:center;">Loading exam, please wait...</p>';
 
             try {
-                const res = await fetch(getJSONPath(part, num));
-                if (!res.ok) throw new Error('File not found');
-                const exam = await res.json();
-                renderExam(exam, container);
-            } catch (e) {
-                container.innerHTML = `<p style="color:red;">Failed to load: ${e.message}</p>`;
+                const url = getJSONPath(part, num);
+                console.log('Fetching:', url);
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status} - ${response.statusText}`);
+                }
+                const exam = await response.json();
+                console.log('Exam loaded:', exam.title);
+                renderExam(exam);
+            } catch (error) {
+                console.error('Failed to load exam:', error);
+                container.innerHTML = `<p style="color:red; text-align:center;">❌ Failed to load exam. ${error.message}</p>`;
+            } finally {
+                showBtn.disabled = false;
+                showBtn.textContent = 'Show Exam';
             }
         }
 
-        function renderExam(exam, container) {
+        function renderExam(exam) {
             let html = `<div class="a4-page">`;
-            html += `<img src="logo.png" class="logo-img" onerror="this.style.display='none'">`;
+            html += `<img src="logo.png" class="logo-img" onerror="this.style.display='none'" alt="Logo">`;
             html += `<div class="exam-title">${exam.title}</div>`;
 
             exam.sections.forEach(section => {
@@ -179,17 +200,17 @@
 
                 const images = section.images || [];
                 const lines = section.text.split('\n').filter(line => line.trim() !== '');
-                
-                // Check if any image has position "above"
-                const aboveImage = images.find(img => img.position === 'above');
-                if (aboveImage) {
-                    const src = getImagePath(aboveImage.suggested_filename);
+
+                // Check for image positioned "above"
+                const aboveImg = images.find(img => img.position === 'above');
+                if (aboveImg) {
+                    const src = getImagePath(aboveImg.suggested_filename);
                     html += `<img src="${src}" class="section-image-above" onerror="this.style.display='none'" alt="">`;
-                    // remove it from the list so it's not used again below
-                    images.splice(images.indexOf(aboveImage), 1);
+                    // remove from array to avoid double display
+                    images.splice(images.indexOf(aboveImg), 1);
                 }
 
-                // If the number of remaining images matches number of lines, pair them
+                // If remaining images count matches lines, pair them
                 if (images.length === lines.length) {
                     lines.forEach((line, idx) => {
                         html += `<div class="question-line">`;
@@ -199,7 +220,7 @@
                         html += `</div>`;
                     });
                 } else {
-                    // fallback: just show the text, then any leftover images underneath
+                    // Fallback: text block then images below
                     html += `<div class="question-text">${section.text.replace(/\n/g, '<br>')}</div>`;
                     if (images.length > 0) {
                         html += `<div style="display:flex; gap:8px; margin-top:6px; flex-wrap:wrap;">`;
@@ -214,12 +235,18 @@
                 html += `</div>`; // end section
             });
 
-            html += `<footer>English Time 2 &copy; 2025</footer>`;
+            html += `<footer>English Time 2 © 2025</footer>`;
             html += `</div>`; // end a4-page
             container.innerHTML = html;
         }
 
-        window.addEventListener('DOMContentLoaded', loadAndRender);
+        // ---------- Event listeners ----------
+        showBtn.addEventListener('click', loadAndRender);
+        printBtn.addEventListener('click', () => window.print());
+
+        // Optional: load default exam on page load
+        // Uncomment the line below to automatically load Exam 1 on page load
+        // window.addEventListener('DOMContentLoaded', loadAndRender);
     </script>
 </body>
 </html>
