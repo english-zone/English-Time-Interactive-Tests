@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Time 2 - الاختبارات التفاعلية</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f1f3f5;
+            color: #212529;
+            line-height: 1.6;
+            padding: 10px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            padding: 20px 25px 30px;
+        }
+        .logo {
+            display: block;
+            max-width: 140px;
+            margin: 0 auto 15px;
+        }
+        h2 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+        }
+        .exam-title {
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #007bff;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 10px;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+        select, button {
+            padding: 12px 18px;
+            border-radius: 8px;
+            border: 1px solid #ced4da;
+            font-size: 1rem;
+            background: white;
+            cursor: pointer;
+            transition: 0.2s;
+            font-family: inherit;
+        }
+        select:focus, button:focus { outline: none; border-color: #007bff; box-shadow: 0 0 0 3px rgba(0,123,255,0.25); }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            font-weight: bold;
+        }
+        button:hover { background: #0056b3; transform: translateY(-1px); }
+        button:disabled { background: #6c757d; cursor: not-allowed; transform: none; }
+        .btn-play {
+            background: #28a745;
+        }
+        .btn-play:hover { background: #218838; }
+        .btn-nav {
+            background: #6c757d;
+            min-width: 110px;
+        }
+        .btn-nav:hover { background: #5a6268; }
+        .section-box {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+        .section-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #343a40;
+            margin-bottom: 15px;
+            border-right: 4px solid #007bff;
+            padding-right: 10px;
+        }
+        .section-text {
+            white-space: pre-wrap;
+            background: white;
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px solid #ced4da;
+            margin: 10px 0;
+            font-size: 1.05rem;
+            line-height: 2.2;
+        }
+        .images-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin: 15px 0;
+        }
+        .image-card {
+            text-align: center;
+            max-width: 180px;
+        }
+        .image-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
+            background: white;
+            padding: 4px;
+        }
+        .image-card .caption {
+            font-size: 0.8rem;
+            color: #6c757d;
+            margin-top: 5px;
+        }
+        .status-msg {
+            padding: 10px;
+            border-radius: 8px;
+            margin: 10px 0;
+            display: none;
+            text-align: center;
+        }
+        .status-success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; display: block; }
+        .status-error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; display: block; }
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        audio { width: 100%; margin-top: 10px; display: none; }
+        footer { text-align: center; margin-top: 25px; color: #6c757d; font-size: 0.9rem; }
+        @media (max-width: 600px) {
+            .container { padding: 15px; }
+            .controls { flex-direction: column; align-items: stretch; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="logo.png" alt="English Zone Logo" class="logo" onerror="this.style.display='none'">
+
+        <h2>📝 English Time 2 - الاختبارات</h2>
+
+        <div class="controls">
+            <select id="partSelect">
+                <option value="A">Basic 2A (Units 1-6)</option>
+                <option value="B">Basic 2B (Units 7-12)</option>
+            </select>
+            <select id="examSelect">
+                <option value="1">الاختبار 1</option>
+                <option value="2">الاختبار 2</option>
+                <option value="3">الاختبار 3</option>
+                <option value="4">الاختبار 4</option>
+            </select>
+            <button id="loadBtn" class="btn-play">📥 تحميل الاختبار</button>
+            <button id="playAudioBtn" class="btn-play" disabled>🔊 تشغيل الصوت</button>
+        </div>
+
+        <div id="statusMsg" class="status-msg"></div>
+
+        <div id="examContainer">
+            <p style="text-align:center; color:#6c757d;">اختر القسم والاختبار ثم اضغط "تحميل الاختبار".</p>
+        </div>
+
+        <div class="nav-buttons" id="navButtons" style="display: none;">
+            <button id="prevSection" class="btn-nav" disabled>⬅️ السابق</button>
+            <span id="sectionIndicator" style="align-self:center; font-weight:bold;"></span>
+            <button id="nextSection" class="btn-nav">التالي ➡️</button>
+        </div>
+
+        <audio id="audioPlayer" controls>
+            <source id="audioSource" src="" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <footer>English Time 2 Interactive Tests © 2025</footer>
+
+    <script>
+        // ---------- عناصر الصفحة ----------
+        const partSelect = document.getElementById('partSelect');
+        const examSelect = document.getElementById('examSelect');
+        const loadBtn = document.getElementById('loadBtn');
+        const playAudioBtn = document.getElementById('playAudioBtn');
+        const examContainer = document.getElementById('examContainer');
+        const statusMsg = document.getElementById('statusMsg');
+        const audioPlayer = document.getElementById('audioPlayer');
+        const audioSource = document.getElementById('audioSource');
+        const prevBtn = document.getElementById('prevSection');
+        const nextBtn = document.getElementById('nextSection');
+        const sectionIndicator = document.getElementById('sectionIndicator');
+        const navButtons = document.getElementById('navButtons');
+
+        // ---------- حالة الاختبار ----------
+        let currentExam = null;         // بيانات JSON المحملة
+        let currentSectionIndex = 0;   // القسم الحالي المعروض
+        let currentPart = 'A';
+        let currentExamNum = '1';
+
+        // ---------- دوال مساعدة ----------
+        function showStatus(text, type) {
+            statusMsg.innerText = text;
+            statusMsg.className = 'status-msg';
+            if (type === 'success') statusMsg.classList.add('status-success');
+            else if (type === 'error') statusMsg.classList.add('status-error');
+            setTimeout(() => { statusMsg.className = 'status-msg'; }, 4000);
+        }
+
+        // بناء مسار الصورة
+        function getImagePath(filename) {
+            // كل الصور داخل English time 2/images/
+            return `English time 2/images/${filename}.jpg`;
+        }
+
+        // عرض قسم معين
+        function renderSection(index) {
+            if (!currentExam || !currentExam.sections) return;
+            const sections = currentExam.sections;
+            if (index < 0 || index >= sections.length) return;
+
+            const section = sections[index];
+            let html = `
+                <div class="section-box">
+                    <div class="section-title">${section.section_title}</div>
+                    <div class="section-text">${section.text.replace(/\n/g, '<br>')}</div>
+            `;
+
+            // عرض الصور إن وجدت
+            if (section.images && section.images.length > 0) {
+                html += '<div class="images-row">';
+                section.images.forEach(img => {
+                    const imgSrc = getImagePath(img.suggested_filename);
+                    html += `
+                        <div class="image-card">
+                            <img src="${imgSrc}" alt="${img.description || ''}" onerror="this.style.display='none'">
+                            <div class="caption">${img.description || ''}</div>
+                        </div>
+                    `;
+                });
+                html += '</div>';
+            }
+
+            html += '</div>';
+            examContainer.innerHTML = html;
+
+            // تحديث أزرار التنقل
+            sectionIndicator.innerText = `القسم ${index + 1} من ${sections.length}`;
+            prevBtn.disabled = (index === 0);
+            nextBtn.disabled = (index === sections.length - 1);
+        }
+
+        // تحميل الاختبار من ملف JSON
+        async function loadExam() {
+            const part = partSelect.value;
+            const num = examSelect.value;
+            const examFile = `English time 2/ET2_${part}_Exam${num}.json`;
+
+            currentPart = part;
+            currentExamNum = num;
+            loadBtn.disabled = true;
+            loadBtn.innerText = '⏳ جاري التحميل...';
+            showStatus('', '');
+
+            try {
+                const response = await fetch(examFile);
+                if (!response.ok) throw new Error(`ملف ${examFile} غير موجود`);
+                currentExam = await response.json();
+                currentSectionIndex = 0;
+                renderSection(0);
+                navButtons.style.display = 'flex';
+                playAudioBtn.disabled = false;
+                showStatus(`✅ تم تحميل ${currentExam.title}`, 'success');
+            } catch (err) {
+                examContainer.innerHTML = '<p style="text-align:center; color:red;">❌ فشل تحميل الاختبار. تأكد من وجود الملف.</p>';
+                navButtons.style.display = 'none';
+                playAudioBtn.disabled = true;
+                showStatus(`⚠️ ${err.message}`, 'error');
+            } finally {
+                loadBtn.disabled = false;
+                loadBtn.innerText = '📥 تحميل الاختبار';
+            }
+        }
+
+        // التنقل بين الأقسام
+        function goToSection(delta) {
+            if (!currentExam) return;
+            const newIndex = currentSectionIndex + delta;
+            if (newIndex < 0 || newIndex >= currentExam.sections.length) return;
+            currentSectionIndex = newIndex;
+            renderSection(currentSectionIndex);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // تشغيل الصوت (نفس منطق index.html)
+        function playExamAudio() {
+            const audioFile = `English time 2/audio/ET2_${currentPart}_Exam${currentExamNum}.mp3`;
+            audioSource.src = audioFile;
+            audioPlayer.load();
+
+            audioPlayer.play().then(() => {
+                showStatus(`🎵 جاري تشغيل الصوت: ${currentExam.title}`, 'success');
+            }).catch(() => {
+                showStatus('⚠️ ملف الصوت غير موجود، جاري القراءة الآلية...', 'error');
+                const utterance = new SpeechSynthesisUtterance(`Listening test for ${currentExam.title}`);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.9;
+                speechSynthesis.speak(utterance);
+            });
+        }
+
+        // ---------- ربط الأحداث ----------
+        loadBtn.addEventListener('click', loadExam);
+        playAudioBtn.addEventListener('click', playExamAudio);
+        prevBtn.addEventListener('click', () => goToSection(-1));
+        nextBtn.addEventListener('click', () => goToSection(1));
+
+        // تحديث قائمة الاختبارات عند تغيير القسم (تجميل فقط)
+        partSelect.addEventListener('change', () => {
+            // يمكن تركها كما هي، الأرقام ثابتة
+        });
+
+        // تحميل أول اختبار تلقائياً عند فتح الصفحة (اختياري)
+        // يمكنك إلغاء التعليق إن أردت التحميل المباشر
+        // window.addEventListener('DOMContentLoaded', loadExam);
+    </script>
+</body>
+</html>
