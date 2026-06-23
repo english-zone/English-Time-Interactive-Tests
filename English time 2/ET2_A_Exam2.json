@@ -3,42 +3,42 @@
   "title": "Exam 2 (half Unit 2 + Unit 3)",
   "sections": [
     {
-      "section_title": "A. Does it begin with l or r? Listen and match (from Unit 2).",
+      "section_title": "A. Does it begin with l or r? Listen and match (Unit 2).",
       "text": "1. ____\n2. ____\n3. ____\n4. ____\n5. ____\n6. ____\n\nL l\nR r",
       "images": [
-        {"position_in_text": "next to number 1", "description": "An object starting with L or R", "suggested_filename": "ET2_A_U2_phonics_1"},
-        {"position_in_text": "next to number 2", "description": "An object starting with L or R", "suggested_filename": "ET2_A_U2_phonics_2"},
-        {"position_in_text": "next to number 3", "description": "An object starting with L or R", "suggested_filename": "ET2_A_U2_phonics_3"},
-        {"position_in_text": "next to number 4", "description": "An object starting with L or R", "suggested_filename": "ET2_A_U2_phonics_4"},
-        {"position_in_text": "next to number 5", "description": "An object starting with L or R", "suggested_filename": "ET2_A_U2_phonics_5"},
-        {"position_in_text": "next to number 6", "description": "An object starting with L or R", "suggested_filename": "ET2_A_U2_phonics_6"}
+        { "position": "right", "description": "Object for L/R", "file": "ET2_A_U2_phonics_1" },
+        { "position": "right", "description": "Object for L/R", "file": "ET2_A_U2_phonics_2" },
+        { "position": "right", "description": "Object for L/R", "file": "ET2_A_U2_phonics_3" },
+        { "position": "right", "description": "Object for L/R", "file": "ET2_A_U2_phonics_4" },
+        { "position": "right", "description": "Object for L/R", "file": "ET2_A_U2_phonics_5" },
+        { "position": "right", "description": "Object for L/R", "file": "ET2_A_U2_phonics_6" }
       ]
     },
     {
-      "section_title": "B. Unscramble and write (from Unit 2).",
+      "section_title": "B. Unscramble and write (Unit 2).",
       "text": "1. s e l p e ____________\n2. e d a r ____________\n3. r i e t w ____________\n4. d w a r ____________",
       "images": [
-        {"position_in_text": "next to question 1", "description": "A person sleeping", "suggested_filename": "ET2_A_U2_sleep"},
-        {"position_in_text": "next to question 2", "description": "A person reading a book", "suggested_filename": "ET2_A_U2_read"},
-        {"position_in_text": "next to question 3", "description": "A person writing", "suggested_filename": "ET2_A_U2_write"},
-        {"position_in_text": "next to question 4", "description": "A person drawing", "suggested_filename": "ET2_A_U2_draw"}
+        { "position": "right", "description": "Sleeping", "file": "ET2_A_U2_sleep" },
+        { "position": "right", "description": "Reading", "file": "ET2_A_U2_read" },
+        { "position": "right", "description": "Writing", "file": "ET2_A_U2_write" },
+        { "position": "right", "description": "Drawing", "file": "ET2_A_U2_draw" }
       ]
     },
     {
-      "section_title": "C. Listen and write (from Unit 3).",
+      "section_title": "C. Listen and write (Unit 3).",
       "text": "1. This is _____________________ you.\n2. _______________________ birthday!\n3. ______________________________\n4. Youre ___________ ___________ it.",
       "images": [
-        {"position_in_text": "above the text", "description": "Children at a birthday party exchanging gifts", "suggested_filename": "ET2_A_U3_birthday_gift"}
+        { "position": "above", "description": "Birthday party", "file": "ET2_A_U3_birthday_gift" }
       ]
     },
     {
-      "section_title": "D. Does it have c, -ck, q, or -x? Listen and circle (from Unit 3).",
+      "section_title": "D. Does it have c, -ck, q, or -x? Listen and circle (Unit 3).",
       "text": "1. c q\n2. -ck -x\n3. c q\n4. -ck -x",
       "images": [
-        {"position_in_text": "next to question 1", "description": "An object containing c or q", "suggested_filename": "ET2_A_U3_phonics_1"},
-        {"position_in_text": "next to question 2", "description": "An object ending with -ck or -x", "suggested_filename": "ET2_A_U3_phonics_2"},
-        {"position_in_text": "next to question 3", "description": "An object containing c or q", "suggested_filename": "ET2_A_U3_phonics_3"},
-        {"position_in_text": "next to question 4", "description": "An object ending with -ck or -x", "suggested_filename": "ET2_A_U3_phonics_4"}
+        { "position": "right", "description": "c or q", "file": "ET2_A_U3_phonics_1" },
+        { "position": "right", "description": "ck or x", "file": "ET2_A_U3_phonics_2" },
+        { "position": "right", "description": "c or q", "file": "ET2_A_U3_phonics_3" },
+        { "position": "right", "description": "ck or x", "file": "ET2_A_U3_phonics_4" }
       ]
     }
   ]
