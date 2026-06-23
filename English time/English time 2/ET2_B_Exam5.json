@@ -11,12 +11,12 @@
       "section_title": "B. Which one has long o? Listen and circle (from Unit 7).",
       "text": "1. \n2. \n3. \n4. \n5. \n6. ",
       "images": [
-        {"position_in_text": "بجانب الرقم 1","description": "رسم لثلاثة عناصر (طائرة ورقية، قارب، قدمين)","suggested_filename": "ET2_B_U7_phonics_1"},
-        {"position_in_text": "بجانب الرقم 2","description": "رسم لثلاثة عناصر (نحلة، مطر، معطف)","suggested_filename": "ET2_B_U7_phonics_2"},
-        {"position_in_text": "بجانب الرقم 3","description": "رسم لثلاثة عناصر (نافذة، رقم 5، كعكة)","suggested_filename": "ET2_B_U7_phonics_3"},
-        {"position_in_text": "بجانب الرقم 4","description": "رسم لثلاثة عناصر (ثلج، كوب، طائرة ورقية)","suggested_filename": "ET2_B_U7_phonics_4"},
-        {"position_in_text": "بجانب الرقم 5","description": "رسم لثلاثة عناصر (طفل نائم، ورقة، دراجة)","suggested_filename": "ET2_B_U7_phonics_5"},
-        {"position_in_text": "بجانب الرقم 6","description": "رسم لثلاثة عناصر (منزل، بحيرة، مصباح)","suggested_filename": "ET2_B_U7_phonics_6"}
+        { "position_in_text": "next to number 1", "description": "Three objects (kite, boat, feet)", "suggested_filename": "ET2_B_U7_phonics_1" },
+        { "position_in_text": "next to number 2", "description": "Three objects (bee, rain, coat)", "suggested_filename": "ET2_B_U7_phonics_2" },
+        { "position_in_text": "next to number 3", "description": "Three objects (window, number 5, cake)", "suggested_filename": "ET2_B_U7_phonics_3" },
+        { "position_in_text": "next to number 4", "description": "Three objects (snow, cup, kite)", "suggested_filename": "ET2_B_U7_phonics_4" },
+        { "position_in_text": "next to number 5", "description": "Three objects (sleeping child, paper, bike)", "suggested_filename": "ET2_B_U7_phonics_5" },
+        { "position_in_text": "next to number 6", "description": "Three objects (house, lake, lamp)", "suggested_filename": "ET2_B_U7_phonics_6" }
       ]
     },
     {
