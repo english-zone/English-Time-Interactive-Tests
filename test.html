@@ -202,13 +202,11 @@
         const sectionIndicator = document.getElementById('sectionIndicator');
         const navButtons = document.getElementById('navButtons');
 
-        // ---------- حالة الاختبار ----------
-        let currentExam = null;         // بيانات JSON المحملة
-        let currentSectionIndex = 0;   // القسم الحالي المعروض
+        let currentExam = null;
+        let currentSectionIndex = 0;
         let currentPart = 'A';
         let currentExamNum = '1';
 
-        // ---------- دوال مساعدة ----------
         function showStatus(text, type) {
             statusMsg.innerText = text;
             statusMsg.className = 'status-msg';
@@ -217,13 +215,10 @@
             setTimeout(() => { statusMsg.className = 'status-msg'; }, 4000);
         }
 
-        // بناء مسار الصورة
         function getImagePath(filename) {
-            // كل الصور داخل English time 2/images/
             return `English time 2/images/${filename}.jpg`;
         }
 
-        // عرض قسم معين
         function renderSection(index) {
             if (!currentExam || !currentExam.sections) return;
             const sections = currentExam.sections;
@@ -236,7 +231,6 @@
                     <div class="section-text">${section.text.replace(/\n/g, '<br>')}</div>
             `;
 
-            // عرض الصور إن وجدت
             if (section.images && section.images.length > 0) {
                 html += '<div class="images-row">';
                 section.images.forEach(img => {
@@ -254,13 +248,11 @@
             html += '</div>';
             examContainer.innerHTML = html;
 
-            // تحديث أزرار التنقل
             sectionIndicator.innerText = `القسم ${index + 1} من ${sections.length}`;
             prevBtn.disabled = (index === 0);
             nextBtn.disabled = (index === sections.length - 1);
         }
 
-        // تحميل الاختبار من ملف JSON
         async function loadExam() {
             const part = partSelect.value;
             const num = examSelect.value;
@@ -292,7 +284,6 @@
             }
         }
 
-        // التنقل بين الأقسام
         function goToSection(delta) {
             if (!currentExam) return;
             const newIndex = currentSectionIndex + delta;
@@ -302,7 +293,6 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // تشغيل الصوت (نفس منطق index.html)
         function playExamAudio() {
             const audioFile = `English time 2/audio/ET2_${currentPart}_Exam${currentExamNum}.mp3`;
             audioSource.src = audioFile;
@@ -319,20 +309,10 @@
             });
         }
 
-        // ---------- ربط الأحداث ----------
         loadBtn.addEventListener('click', loadExam);
         playAudioBtn.addEventListener('click', playExamAudio);
         prevBtn.addEventListener('click', () => goToSection(-1));
         nextBtn.addEventListener('click', () => goToSection(1));
-
-        // تحديث قائمة الاختبارات عند تغيير القسم (تجميل فقط)
-        partSelect.addEventListener('change', () => {
-            // يمكن تركها كما هي، الأرقام ثابتة
-        });
-
-        // تحميل أول اختبار تلقائياً عند فتح الصفحة (اختياري)
-        // يمكنك إلغاء التعليق إن أردت التحميل المباشر
-        // window.addEventListener('DOMContentLoaded', loadExam);
     </script>
 </body>
 </html>
