@@ -1,39 +1,67 @@
 {
   "test_id": "ET2_B_Exam8",
-  "title": "Exam 8 (half Unit 11 + Unit 12)",
+  "title": "Final Test (Units 7-12)",
   "sections": [
     {
-      "section_title": "A. Does it have short i or long i? Listen and match (Unit 11).",
-      "text": "1. \n2. \n3. \n4. \n5. \n6. \n\nshort i\nlong i",
+      "section_title": "A. Listen and circle ✓ or ✗.",
+      "text": "1. ✓ ✗\n2. ✓ ✗\n3. ✓ ✗\n4. ✓ ✗\n5. ✓ ✗\n6. ✓ ✗",
       "images": [
-        { "suggested_filename": "ET2_B_U11_phonics_1", "position": "right" },
-        { "suggested_filename": "ET2_B_U11_phonics_2", "position": "right" },
-        { "suggested_filename": "ET2_B_U11_phonics_3", "position": "right" },
-        { "suggested_filename": "ET2_B_U11_phonics_4", "position": "right" },
-        { "suggested_filename": "ET2_B_U11_phonics_5", "position": "right" },
-        { "suggested_filename": "ET2_B_U11_phonics_6", "position": "right" }
+        { "suggested_filename": "ET2_Final_A_1", "position": "above" },
+        { "suggested_filename": "ET2_Final_A_2", "position": "above" },
+        { "suggested_filename": "ET2_Final_A_3", "position": "above" },
+        { "suggested_filename": "ET2_Final_A_4", "position": "above" },
+        { "suggested_filename": "ET2_Final_A_5", "position": "above" },
+        { "suggested_filename": "ET2_Final_A_6", "position": "above" }
       ]
     },
     {
-      "section_title": "B. Listen and write (Unit 12).",
-      "text": "1. __________________ the cake, please.\n2. __________________ one?\n3. The __________________ cake.\n4. Here. __________________ yourself.\n5. __________________",
+      "section_title": "B. Listen and write.",
+      "text": "[Dialogue 1]\n1. Oh, no! What a ___________!\n2. Yeah, you're ___________.\n3. Let's ___________ up.\n4. Okay. Let's _____ the _____.\n\n[Dialogue 2]\n1. Ms. Lee, may I use the ________________________________?\n2. Of _________________.\n3. _________________ is it?\n4. Its _______________ there.\n5. I _____________ it. Thanks.",
+      "images": []
+    },
+    {
+      "section_title": "C. Listen and write the number.",
+      "text": "_____ Its blue.\n_____ Blue is my favorite color.\n_____ What color is it?\n_____ Blue is nice, but I like red.",
+      "images": []
+    },
+    {
+      "section_title": "D. Listen and circle.",
+      "text": "1. short a  long a\n2. short i  long i\n3. short u  long u\n4. short o  long o\n5. short e  long e\n6. short a  long a\n7. short i  long i\n8. short o  long o\n9. short e  long e",
+      "images": []
+    },
+    {
+      "section_title": "E. Listen and circle.",
+      "text": "1. hop  hope\n2. ran  rain\n3. tub  tube\n4. bed  bead\n5. sock  soak\n6. man  mane\n7. kit  kite\n8. met  meat",
+      "images": []
+    },
+    {
+      "section_title": "F. Listen and write.",
+      "text": "1. __acket\n2. __emon\n3. __ellow\n4. du____\n5. __at\n6. __am\n7. bo__\n8. __ed",
+      "images": []
+    },
+    {
+      "section_title": "G. Look and circle.",
+      "text": "1. laugh / sleep\n2. salad / bread\n3. write / watch TV\n4. candy / ice cream\n5. cough / fever\n6. fourteen / forty",
       "images": [
-        { "suggested_filename": "ET2_B_U12_listen_icon", "position": "above" }
+        { "suggested_filename": "ET2_Final_G_1", "position": "right" },
+        { "suggested_filename": "ET2_Final_G_2", "position": "right" },
+        { "suggested_filename": "ET2_Final_G_3", "position": "right" },
+        { "suggested_filename": "ET2_Final_G_4", "position": "right" },
+        { "suggested_filename": "ET2_Final_G_5", "position": "right" },
+        { "suggested_filename": "ET2_Final_G_6", "position": "right" }
       ]
     },
     {
-      "section_title": "C. Listen and circle (Unit 12).",
-      "text": "1. cot / coat\n2. jog / joke\n3. not / note\n4. hop / hope\n5. rod / road\n6. got / goat",
+      "section_title": "H. Look and write the letter.",
+      "text": "1. __ shoes\n2. __ tape\n3. __ scissors\n4. __ fruit\n5. __ socks\n6. __ desk\n7. __ juice\n8. __ computer\n9. __ shirts\n10. __ paper\n11. __ chips\n12. __ chair",
       "images": [
-        { "suggested_filename": "ET2_B_U12_listen_icon_B", "position": "above" }
+        { "suggested_filename": "ET2_Final_H_vocabulary", "position": "above" }
       ]
     },
     {
-      "section_title": "D. Look and write (Unit 12).",
-      "text": "1. __________________\n2. __________________\n3. __________________\n4. __________________\n5. __________________\n6. __________________",
-      "images": [
-        { "suggested_filename": "ET2_B_U12_picnic_foods", "position": "left" }
-      ]
+      "section_title": "I. Unscramble and write.",
+      "text": "1. u l e g\n_______________\n2. c e e e s h\n_______________\n3. e r v f e\n_______________\n4. o r p p n o c\n_______________\n5. o h r t s s\n_______________\n6. f h e l s\n_______________",
+      "images": []
     }
   ]
 }
