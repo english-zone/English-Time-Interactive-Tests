@@ -3,21 +3,21 @@
   "title": "Exam 7 (Unit 10 + half Unit 11)",
   "sections": [
     {
-      "section_title": "A. Listen and circle (from Unit 10).",
+      "section_title": "A. Listen and circle (Unit 10).",
       "text": "1. Hey! | They're / That's | mine!\n2. No, / Yes, | it isn't. / It's | That's / It's | mine.\n3. Oops! / Uh-oh! | Sorry.\n4. That's | a cow. / okay.",
       "images": []
     },
     {
-      "section_title": "B. Which one has a different vowel sound? Listen and write X (from Unit 10).",
+      "section_title": "B. Which one has a different vowel sound? Listen and write X (Unit 10).",
       "text": "1. \n2. \n3. ",
       "images": [
-        { "position_in_text": "next to number 1", "description": "Three objects (bed, crib, seal)", "suggested_filename": "ET2_B_U10_phonics_1" },
-        { "position_in_text": "next to number 2", "description": "Three objects (pen, a boy reading, a girl eating)", "suggested_filename": "ET2_B_U10_phonics_2" },
-        { "position_in_text": "next to number 3", "description": "Three objects (bed, cup, crib)", "suggested_filename": "ET2_B_U10_phonics_3" }
+        { "position": "right", "description": "Bed, crib, seal", "file": "ET2_B_U10_phonics_1" },
+        { "position": "right", "description": "Pen, reading, eating", "file": "ET2_B_U10_phonics_2" },
+        { "position": "right", "description": "Bed, cup, crib", "file": "ET2_B_U10_phonics_3" }
       ]
     },
     {
-      "section_title": "C. Listen and match (from Unit 11).",
+      "section_title": "C. Listen and match (Unit 11).",
       "text": "1. Ms. Lee, may I • • course.\n2. Of • • see it. Thanks.\n3. Where • • over there.\n4. It's • • use the bathroom?\n5. I • • is it?",
       "images": []
     }
