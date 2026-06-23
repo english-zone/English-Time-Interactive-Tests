@@ -6,35 +6,35 @@
       "section_title": "A. Do they both have long e? Listen and write ✓ or ✗ (from Unit 5).",
       "text": "1. \n2. \n3. ",
       "images": [
-        {"position_in_text": "بجانب الرقم 1","description": "رسم لعنصرين يحتوي اسماهما على صوت حرف e","suggested_filename": "ET2_A_U5_phonics_1"},
-        {"position_in_text": "بجانب الرقم 2","description": "رسم لعنصرين يحتوي اسماهما على صوت حرف e","suggested_filename": "ET2_A_U5_phonics_2"},
-        {"position_in_text": "بجانب الرقم 3","description": "رسم لعنصرين يحتوي اسماهما على صوت حرف e","suggested_filename": "ET2_A_U5_phonics_3"}
+        { "position_in_text": "next to number 1", "description": "Two objects whose names contain the letter e sound", "suggested_filename": "ET2_A_U5_phonics_1" },
+        { "position_in_text": "next to number 2", "description": "Two objects whose names contain the letter e sound", "suggested_filename": "ET2_A_U5_phonics_2" },
+        { "position_in_text": "next to number 3", "description": "Two objects whose names contain the letter e sound", "suggested_filename": "ET2_A_U5_phonics_3" }
       ]
     },
     {
       "section_title": "B. Look and circle (from Unit 5).",
       "text": "1. three / thirteen / thirty\n2. twenty / twelve / thirty\n3. forty-six / fifty-eight / forty-eight",
       "images": [
-        {"position_in_text": "بجانب السؤال رقم 1","description": "رسم يوضح رقماً معيناً","suggested_filename": "ET2_A_U5_number_1"},
-        {"position_in_text": "بجانب السؤال رقم 2","description": "رسم يوضح رقماً معيناً","suggested_filename": "ET2_A_U5_number_2"},
-        {"position_in_text": "بجانب السؤال رقم 3","description": "رسم يوضح رقماً معيناً","suggested_filename": "ET2_A_U5_number_3"}
+        { "position_in_text": "next to question 1", "description": "A picture showing a specific number", "suggested_filename": "ET2_A_U5_number_1" },
+        { "position_in_text": "next to question 2", "description": "A picture showing a specific number", "suggested_filename": "ET2_A_U5_number_2" },
+        { "position_in_text": "next to question 3", "description": "A picture showing a specific number", "suggested_filename": "ET2_A_U5_number_3" }
       ]
     },
     {
       "section_title": "C. Listen and circle (from Unit 6).",
       "text": "1. (Where / What) do (they / you) live?\n2. (You / I) live (in / on) Oakville.\n3. (Oh / Yes) really? (You, / Me.) too.\n4. (I) (like / love) it. It's a (nice / nine) place.",
       "images": [
-        {"position_in_text": "فوق النص","description": "رسم لطفلين يتحدثان عن مكان سكنهما","suggested_filename": "ET2_A_U6_neighborhood_dialogue"}
+        { "position_in_text": "above the text", "description": "Two children talking about where they live", "suggested_filename": "ET2_A_U6_neighborhood_dialogue" }
       ]
     },
     {
       "section_title": "D. Does it have long i? Listen and write ✓ or ✗ (from Unit 6).",
       "text": "1. \n2. \n3. \n4. ",
       "images": [
-        {"position_in_text": "بجانب الرقم 1","description": "رسم لعنصر يحتوي اسمه على صوت حرف i","suggested_filename": "ET2_A_U6_phonics_1"},
-        {"position_in_text": "بجانب الرقم 2","description": "رسم لعنصر يحتوي اسمه على صوت حرف i","suggested_filename": "ET2_A_U6_phonics_2"},
-        {"position_in_text": "بجانب الرقم 3","description": "رسم لعنصر يحتوي اسمه على صوت حرف i","suggested_filename": "ET2_A_U6_phonics_3"},
-        {"position_in_text": "بجانب الرقم 4","description": "رسم لعنصر يحتوي اسمه على صوت حرف i","suggested_filename": "ET2_A_U6_phonics_4"}
+        { "position_in_text": "next to number 1", "description": "An object whose name contains the letter i sound", "suggested_filename": "ET2_A_U6_phonics_1" },
+        { "position_in_text": "next to number 2", "description": "An object whose name contains the letter i sound", "suggested_filename": "ET2_A_U6_phonics_2" },
+        { "position_in_text": "next to number 3", "description": "An object whose name contains the letter i sound", "suggested_filename": "ET2_A_U6_phonics_3" },
+        { "position_in_text": "next to number 4", "description": "An object whose name contains the letter i sound", "suggested_filename": "ET2_A_U6_phonics_4" }
       ]
     }
   ]
