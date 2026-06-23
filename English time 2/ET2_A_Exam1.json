@@ -6,44 +6,44 @@
       "section_title": "A. Listen and write.",
       "text": "1. How ________ are _________?\n2. _________ ten. _________ old are you?\n3. Im _____________________.",
       "images": [
-        { "position": "above", "file": "ET2_A_U1_greeting" }
+        { "suggested_filename": "ET2_A_U1_greeting", "position": "above" }
       ]
     },
     {
       "section_title": "B. Does it begin with j or y? Listen and write.",
       "text": "1. __am\n2. __o-yo\n3. __ogurt\n4. __acket",
       "images": [
-        { "position": "right", "file": "ET2_A_U1_jam" },
-        { "position": "right", "file": "ET2_A_U1_yoyo" },
-        { "position": "right", "file": "ET2_A_U1_yogurt" },
-        { "position": "right", "file": "ET2_A_U1_jacket" }
+        { "suggested_filename": "ET2_A_U1_jam", "position": "right" },
+        { "suggested_filename": "ET2_A_U1_yoyo", "position": "right" },
+        { "suggested_filename": "ET2_A_U1_yogurt", "position": "right" },
+        { "suggested_filename": "ET2_A_U1_jacket", "position": "right" }
       ]
     },
     {
       "section_title": "C. Look and write.",
       "text": "1. m __ t __ e __\n2. s __ s __ e __\n3. b __ o __ h __ r\n4. f __ t ____ r",
       "images": [
-        { "position": "above", "file": "ET2_A_U1_mother" },
-        { "position": "above", "file": "ET2_A_U1_sister" },
-        { "position": "above", "file": "ET2_A_U1_brother" },
-        { "position": "above", "file": "ET2_A_U1_father" }
+        { "suggested_filename": "ET2_A_U1_mother", "position": "above" },
+        { "suggested_filename": "ET2_A_U1_sister", "position": "above" },
+        { "suggested_filename": "ET2_A_U1_brother", "position": "above" },
+        { "suggested_filename": "ET2_A_U1_father", "position": "above" }
       ]
     },
     {
       "section_title": "D. Read the question. Write the answer.",
       "text": "1. Whos he? _____________\n2. Whos she? ____________\n3. Whos she? ____________\n4. Whos he? _____________",
       "images": [
-        { "position": "right", "file": "ET2_A_U1_he1" },
-        { "position": "right", "file": "ET2_A_U1_she1" },
-        { "position": "right", "file": "ET2_A_U1_she2" },
-        { "position": "right", "file": "ET2_A_U1_he2" }
+        { "suggested_filename": "ET2_A_U1_he1", "position": "right" },
+        { "suggested_filename": "ET2_A_U1_she1", "position": "right" },
+        { "suggested_filename": "ET2_A_U1_she2", "position": "right" },
+        { "suggested_filename": "ET2_A_U1_he2", "position": "right" }
       ]
     },
     {
       "section_title": "E. Listen and write the number (Unit 2).",
       "text": "____ Cool!\n____ No, Its Tuesday.\n____ Is today Monday?\n____ Yay! My birthday is on Wednesday!",
       "images": [
-        { "position": "above", "file": "ET2_A_U2_talking_days" }
+        { "suggested_filename": "ET2_A_U2_talking_days", "position": "above" }
       ]
     }
   ]
