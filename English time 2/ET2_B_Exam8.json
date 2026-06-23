@@ -6,33 +6,33 @@
       "section_title": "A. Does it have short i or long i? Listen and match (Unit 11).",
       "text": "1. \n2. \n3. \n4. \n5. \n6. \n\nshort i\nlong i",
       "images": [
-        { "position": "right", "file": "ET2_B_U11_phonics_1" },
-        { "position": "right", "file": "ET2_B_U11_phonics_2" },
-        { "position": "right", "file": "ET2_B_U11_phonics_3" },
-        { "position": "right", "file": "ET2_B_U11_phonics_4" },
-        { "position": "right", "file": "ET2_B_U11_phonics_5" },
-        { "position": "right", "file": "ET2_B_U11_phonics_6" }
+        { "suggested_filename": "ET2_B_U11_phonics_1", "position": "right" },
+        { "suggested_filename": "ET2_B_U11_phonics_2", "position": "right" },
+        { "suggested_filename": "ET2_B_U11_phonics_3", "position": "right" },
+        { "suggested_filename": "ET2_B_U11_phonics_4", "position": "right" },
+        { "suggested_filename": "ET2_B_U11_phonics_5", "position": "right" },
+        { "suggested_filename": "ET2_B_U11_phonics_6", "position": "right" }
       ]
     },
     {
       "section_title": "B. Listen and write (Unit 12).",
       "text": "1. __________________ the cake, please.\n2. __________________ one?\n3. The __________________ cake.\n4. Here. __________________ yourself.\n5. __________________",
       "images": [
-        { "position": "above", "file": "ET2_B_U12_listen_icon" }
+        { "suggested_filename": "ET2_B_U12_listen_icon", "position": "above" }
       ]
     },
     {
       "section_title": "C. Listen and circle (Unit 12).",
       "text": "1. cot / coat\n2. jog / joke\n3. not / note\n4. hop / hope\n5. rod / road\n6. got / goat",
       "images": [
-        { "position": "above", "file": "ET2_B_U12_listen_icon_B" }
+        { "suggested_filename": "ET2_B_U12_listen_icon_B", "position": "above" }
       ]
     },
     {
       "section_title": "D. Look and write (Unit 12).",
       "text": "1. __________________\n2. __________________\n3. __________________\n4. __________________\n5. __________________\n6. __________________",
       "images": [
-        { "position": "left", "file": "ET2_B_U12_picnic_foods" }
+        { "suggested_filename": "ET2_B_U12_picnic_foods", "position": "left" }
       ]
     }
   ]
