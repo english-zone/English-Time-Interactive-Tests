@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>English Time 2 - اختبارات A4</title>
     <style>
-        /* الأساسيات */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             font-family: 'Segoe UI', Tahoma, sans-serif;
@@ -33,7 +32,6 @@
         }
         .no-print button:hover { background: #0056b3; }
 
-        /* صفحة A4 */
         .a4-page {
             width: 210mm;
             min-height: 297mm;
@@ -41,7 +39,6 @@
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
             padding: 15mm 15mm 20mm;
             margin-bottom: 30px;
-            position: relative;
             page-break-after: always;
             line-height: 1.7;
         }
@@ -78,6 +75,7 @@
             color: #333;
             border-right: 4px solid #007bff;
             padding-right: 8px;
+            text-align: right;
         }
 
         .section-content {
@@ -87,6 +85,7 @@
             align-items: flex-start;
         }
 
+        /* النص الإنجليزي سيكون LTR حتى داخل الصفحة العربية */
         .section-text {
             flex: 2;
             min-width: 250px;
@@ -95,6 +94,8 @@
             padding: 8px;
             border-radius: 6px;
             border: 1px solid #ddd;
+            direction: ltr;
+            text-align: left;
         }
 
         .images-container {
@@ -118,12 +119,6 @@
             border: 1px solid #ccc;
             background: white;
             padding: 3px;
-        }
-
-        .image-item .caption {
-            font-size: 0.7rem;
-            color: #555;
-            margin-top: 2px;
         }
 
         footer {
@@ -192,16 +187,16 @@
                 html += `<div class="section">`;
                 html += `<div class="section-title">${section.section_title}</div>`;
                 html += `<div class="section-content">`;
+                // النص الإنجليزي مع direction: ltr
                 html += `<div class="section-text">${section.text.replace(/\n/g, '<br>')}</div>`;
                 
                 if (section.images && section.images.length > 0) {
                     html += `<div class="images-container">`;
                     section.images.forEach(img => {
-                        const src = getImagePath(img.file);
+                        const src = getImagePath(img.suggested_filename);
                         html += `
                             <div class="image-item">
-                                <img src="${src}" alt="${img.description}" onerror="this.style.display='none'">
-                                <div class="caption">${img.description}</div>
+                                <img src="${src}" alt="" onerror="this.style.display='none'">
                             </div>
                         `;
                     });
@@ -216,7 +211,6 @@
             container.innerHTML = html;
         }
 
-        // تحميل أول اختبار افتراضياً
         window.addEventListener('DOMContentLoaded', loadAndRender);
     </script>
 </body>
