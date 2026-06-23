@@ -6,10 +6,10 @@
       "section_title": "A. Does it have long u? Listen and write ✓ or X (Unit 8).",
       "text": "1. \n2. \n3. \n4. ",
       "images": [
-        { "position": "right", "file": "ET2_B_U8_phonics_1" },
-        { "position": "right", "file": "ET2_B_U8_phonics_2" },
-        { "position": "right", "file": "ET2_B_U8_phonics_3" },
-        { "position": "right", "file": "ET2_B_U8_phonics_4" }
+        { "suggested_filename": "ET2_B_U8_phonics_1", "position": "right" },
+        { "suggested_filename": "ET2_B_U8_phonics_2", "position": "right" },
+        { "suggested_filename": "ET2_B_U8_phonics_3", "position": "right" },
+        { "suggested_filename": "ET2_B_U8_phonics_4", "position": "right" }
       ]
     },
     {
@@ -21,10 +21,10 @@
       "section_title": "C. Does it have short a or long a? Listen and circle (Unit 9).",
       "text": "1. \nshort a  long a\n2. \nshort a  long a\n3. \nshort a  long a\n4. \nshort a  long a",
       "images": [
-        { "position": "right", "file": "ET2_B_U9_phonics_1" },
-        { "position": "right", "file": "ET2_B_U9_phonics_2" },
-        { "position": "right", "file": "ET2_B_U9_phonics_3" },
-        { "position": "right", "file": "ET2_B_U9_phonics_4" }
+        { "suggested_filename": "ET2_B_U9_phonics_1", "position": "right" },
+        { "suggested_filename": "ET2_B_U9_phonics_2", "position": "right" },
+        { "suggested_filename": "ET2_B_U9_phonics_3", "position": "right" },
+        { "suggested_filename": "ET2_B_U9_phonics_4", "position": "right" }
       ]
     }
   ]
