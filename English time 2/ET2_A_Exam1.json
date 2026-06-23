@@ -7,9 +7,9 @@
       "text": "1. How ________ are _________?\n2. _________ ten. _________ old are you?\n3. Im _____________________.",
       "images": [
         {
-          "position_in_text": "above the text",
-          "description": "A boy and a woman exchanging greetings",
-          "suggested_filename": "ET2_A_U1_greeting"
+          "position": "above",
+          "description": "A boy and a woman greeting",
+          "file": "ET2_A_U1_greeting"
         }
       ]
     },
@@ -17,41 +17,37 @@
       "section_title": "B. Does it begin with j or y? Listen and write.",
       "text": "1. __am\n2. __o-yo\n3. __ogurt\n4. __acket",
       "images": [
-        { "position_in_text": "next to question 1", "description": "A jar of jam", "suggested_filename": "ET2_A_U1_jam" },
-        { "position_in_text": "next to question 2", "description": "A yo-yo", "suggested_filename": "ET2_A_U1_yoyo" },
-        { "position_in_text": "next to question 3", "description": "A yogurt cup", "suggested_filename": "ET2_A_U1_yogurt" },
-        { "position_in_text": "next to question 4", "description": "A jacket", "suggested_filename": "ET2_A_U1_jacket" }
+        { "position": "right", "description": "Jam", "file": "ET2_A_U1_jam" },
+        { "position": "right", "description": "Yo-yo", "file": "ET2_A_U1_yoyo" },
+        { "position": "right", "description": "Yogurt", "file": "ET2_A_U1_yogurt" },
+        { "position": "right", "description": "Jacket", "file": "ET2_A_U1_jacket" }
       ]
     },
     {
       "section_title": "C. Look and write.",
       "text": "1. m __ t __ e __\n2. s __ s __ e __\n3. b __ o __ h __ r\n4. f __ t ____ r",
       "images": [
-        { "position_in_text": "above word 1", "description": "A mother", "suggested_filename": "ET2_A_U1_mother" },
-        { "position_in_text": "above word 2", "description": "A sister", "suggested_filename": "ET2_A_U1_sister" },
-        { "position_in_text": "above word 3", "description": "A brother", "suggested_filename": "ET2_A_U1_brother" },
-        { "position_in_text": "above word 4", "description": "A father", "suggested_filename": "ET2_A_U1_father" }
+        { "position": "above", "description": "Mother", "file": "ET2_A_U1_mother" },
+        { "position": "above", "description": "Sister", "file": "ET2_A_U1_sister" },
+        { "position": "above", "description": "Brother", "file": "ET2_A_U1_brother" },
+        { "position": "above", "description": "Father", "file": "ET2_A_U1_father" }
       ]
     },
     {
       "section_title": "D. Read the question. Write the answer.",
       "text": "1. Whos he? _____________\n2. Whos she? ____________\n3. Whos she? ____________\n4. Whos he? _____________",
       "images": [
-        { "position_in_text": "next to question 1", "description": "A man", "suggested_filename": "ET2_A_U1_he1" },
-        { "position_in_text": "next to question 2", "description": "A woman", "suggested_filename": "ET2_A_U1_she1" },
-        { "position_in_text": "next to question 3", "description": "A woman", "suggested_filename": "ET2_A_U1_she2" },
-        { "position_in_text": "next to question 4", "description": "A man", "suggested_filename": "ET2_A_U1_he2" }
+        { "position": "right", "description": "Man", "file": "ET2_A_U1_he1" },
+        { "position": "right", "description": "Woman", "file": "ET2_A_U1_she1" },
+        { "position": "right", "description": "Woman", "file": "ET2_A_U1_she2" },
+        { "position": "right", "description": "Man", "file": "ET2_A_U1_he2" }
       ]
     },
     {
-      "section_title": "E. Listen and write the number (from Unit 2).",
+      "section_title": "E. Listen and write the number (Unit 2).",
       "text": "____ Cool!\n____ No, Its Tuesday.\n____ Is today Monday?\n____ Yay! My birthday is on Wednesday!",
       "images": [
-        {
-          "position_in_text": "above the text",
-          "description": "Children talking about days of the week",
-          "suggested_filename": "ET2_A_U2_talking_days"
-        }
+        { "position": "above", "description": "Children talking", "file": "ET2_A_U2_talking_days" }
       ]
     }
   ]
