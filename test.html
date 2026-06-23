@@ -32,15 +32,6 @@
             font-size: 1.6rem;
             margin-bottom: 15px;
         }
-        .exam-title {
-            text-align: center;
-            font-size: 1.3rem;
-            font-weight: bold;
-            color: #007bff;
-            margin-bottom: 25px;
-            border-bottom: 2px solid #e9ecef;
-            padding-bottom: 10px;
-        }
         .controls {
             display: flex;
             gap: 10px;
@@ -65,16 +56,11 @@
             border: none;
             font-weight: bold;
         }
-        button:hover { background: #0056b3; transform: translateY(-1px); }
-        button:disabled { background: #6c757d; cursor: not-allowed; transform: none; }
-        .btn-play {
-            background: #28a745;
-        }
+        button:hover { background: #0056b3; }
+        button:disabled { background: #6c757d; cursor: not-allowed; }
+        .btn-play { background: #28a745; }
         .btn-play:hover { background: #218838; }
-        .btn-nav {
-            background: #6c757d;
-            min-width: 110px;
-        }
+        .btn-nav { background: #6c757d; min-width: 110px; }
         .btn-nav:hover { background: #5a6268; }
         .section-box {
             background: #f8f9fa;
@@ -188,7 +174,6 @@
     <footer>English Time 2 Interactive Tests © 2025</footer>
 
     <script>
-        // ---------- عناصر الصفحة ----------
         const partSelect = document.getElementById('partSelect');
         const examSelect = document.getElementById('examSelect');
         const loadBtn = document.getElementById('loadBtn');
@@ -216,7 +201,8 @@
         }
 
         function getImagePath(filename) {
-            return `English time 2/images/${filename}.jpg`;
+            // المسار المشفر لتفادي مشكلة المسافات
+            return `English%20time%202/images/${filename}.jpg`;
         }
 
         function renderSection(index) {
@@ -256,7 +242,8 @@
         async function loadExam() {
             const part = partSelect.value;
             const num = examSelect.value;
-            const examFile = `English time 2/ET2_${part}_Exam${num}.json`;
+            // المسار المشفر للمجلد
+            const examFile = `English%20time%202/ET2_${part}_Exam${num}.json`;
 
             currentPart = part;
             currentExamNum = num;
@@ -266,7 +253,7 @@
 
             try {
                 const response = await fetch(examFile);
-                if (!response.ok) throw new Error(`ملف ${examFile} غير موجود`);
+                if (!response.ok) throw new Error(`الملف ${examFile} غير موجود`);
                 currentExam = await response.json();
                 currentSectionIndex = 0;
                 renderSection(0);
@@ -294,7 +281,7 @@
         }
 
         function playExamAudio() {
-            const audioFile = `English time 2/audio/ET2_${currentPart}_Exam${currentExamNum}.mp3`;
+            const audioFile = `English%20time%202/audio/ET2_${currentPart}_Exam${currentExamNum}.mp3`;
             audioSource.src = audioFile;
             audioPlayer.load();
 
