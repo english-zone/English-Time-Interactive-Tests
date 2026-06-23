@@ -11,9 +11,9 @@
       "section_title": "B. Which one has a different vowel sound? Listen and write X (Unit 10).",
       "text": "1. \n2. \n3. ",
       "images": [
-        { "position": "right", "file": "ET2_B_U10_phonics_1" },
-        { "position": "right", "file": "ET2_B_U10_phonics_2" },
-        { "position": "right", "file": "ET2_B_U10_phonics_3" }
+        { "suggested_filename": "ET2_B_U10_phonics_1", "position": "right" },
+        { "suggested_filename": "ET2_B_U10_phonics_2", "position": "right" },
+        { "suggested_filename": "ET2_B_U10_phonics_3", "position": "right" }
       ]
     },
     {
