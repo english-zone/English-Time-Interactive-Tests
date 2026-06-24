@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Time 2 - Tests</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #e9ecef; display: flex; flex-direction: column; align-items: center; padding: 20px; }
+        .no-print { background: white; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); padding: 16px 24px; margin-bottom: 20px; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px; width: 210mm; }
+        .no-print select { padding: 9px 14px; font-size: 0.95rem; border-radius: 8px; border: 1px solid #ccc; background: white; cursor: pointer; }
+        .btn { padding: 9px 20px; font-size: 0.95rem; border-radius: 8px; border: none; cursor: pointer; font-weight: bold; transition: background 0.2s; }
+        .btn-primary { background: #007bff; color: white; }
+        .btn-primary:hover { background: #0056b3; }
+        .btn-primary:disabled { background: #6c757d; cursor: not-allowed; }
+        .btn-print { background: #28a745; color: white; }
+        .btn-print:hover { background: #1e7e34; }
+        .btn-print:disabled { background: #6c757d; cursor: not-allowed; }
+        .divider { width: 1px; height: 30px; background: #ddd; margin: 0 4px; }
+        .a4-page { width: 210mm; min-height: 297mm; background: white; box-shadow: 0 0 10px rgba(0,0,0,0.1); padding: 15mm 15mm 20mm; margin-bottom: 30px; page-break-after: always; line-height: 1.6; direction: ltr; text-align: left; }
+        .a4-page:last-child { page-break-after: auto; }
+        .logo-img { display: block; width: 100px; margin: 0 auto 10px; }
+        .exam-title { text-align: center; font-size: 1.4rem; font-weight: bold; margin-bottom: 20px; color: #2c3e50; border-bottom: 2px solid #007bff; padding-bottom: 8px; }
+        .section { margin-bottom: 20px; border: 1px solid #ccc; border-radius: 8px; padding: 12px; background: #fafafa; }
+        .section-title { font-weight: bold; font-size: 1.1rem; margin-bottom: 10px; color: #333; border-left: 4px solid #007bff; padding-left: 8px; }
+        .question-row { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+        .question-row .q-text { flex: 1; }
+        .question-row .q-img { height: 55px; width: auto; border-radius: 4px; border: 1px solid #ddd; flex-shrink: 0; }
+        .above-images { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 10px; }
+        .above-images img { height: 70px; width: auto; border-radius: 6px; border: 1px solid #ccc; }
+        .plain-text { white-space: pre-wrap; line-height: 1.8; }
+        footer { text-align: center; font-size: 0.8rem; color: #888; margin-top: 20px; }
+        #statusMsg { width: 210mm; text-align: center; padding: 12px; font-size: 0.95rem; color: #555; min-height: 40px; }
+        @media print { body { background: white; padding: 0; } .no-print, #statusMsg { display: none !important; } .a4-page { box-shadow: none; margin: 0; padding: 10mm; page-break-after: always; } }
+    </style>
+</head>
+<body>
+<div class="no-print">
+    <label style="font-weight:bold;color:#555;font-size:0.9rem;">القسم:</label>
+    <select id="partSelect">
+        <option value="A">Basic 2A</option>
+        <option value="B">Basic 2B</option>
+    </select>
+    <label style="font-weight:bold;color:#555;font-size:0.9rem;">الامتحان:</label>
+    <select id="examSelect"></select>
+    <div class="divider"></div>
+    <button class="btn btn-primary" id="showBtn">&#9654; عرض الامتحان</button>
+    <button class="btn btn-print" id="printBtn" disabled>&#128424; طباعة</button>
+</div>
+<div id="statusMsg">اختر القسم والامتحان ثم اضغط عرض الامتحان.</div>
+<div id="examContainer"></div>
+<script>
+const partSelect = document.getElementById('partSelect');
+const examSelect = document.getElementById('examSelect');
+const showBtn    = document.getElementById('showBtn');
+const printBtn   = document.getElementById('printBtn');
+const container  = document.getElementById('examContainer');
+const statusMsg  = document.getElementById('statusMsg');
+function updateExams() {
+    const part = partSelect.value;
+    examSelect.innerHTML = '';
+    const map = { A: [[1,'Exam 1'],[2,'Exam 2'],[3,'Exam 3'],[4,'Exam 4']], B: [[5,'Exam 5'],[6,'Exam 6'],[7,'Exam 7'],[8,'Exam 8']] };
+    map[part].forEach(([v,t]) => { const o = document.createElement('option'); o.value=v; o.textContent=t; examSelect.appendChild(o); });
+}
+partSelect.addEventListener('change', updateExams);
+updateExams();
+showBtn.addEventListener('click', async () => {
+    const part = partSelect.value;
+    const num  = examSelect.value;
+    const url  = encodeURI('English time 2/ET2_' + part + '_Exam' + num + '.json');
+    showBtn.disabled = true;
+    showBtn.textContent = 'جاري التحميل...';
+    statusMsg.style.display = 'block';
+    statusMsg.textContent = 'جاري تحميل الامتحان...';
+    container.innerHTML = '';
+    try {
+        const res = await fetch(url);
+        if (!res.ok) throw new Error('HTTP ' + res.status + ' - ' + url);
+        const exam = await res.json();
+        renderExam(exam);
+        statusMsg.style.display = 'none';
+        printBtn.disabled = false;
+    } catch(err) {
+        statusMsg.innerHTML = '<span style="color:red">فشل التحميل: ' + err.message + '</span>';
+    } finally {
+        showBtn.disabled = false;
+        showBtn.textContent = 'عرض الامتحان';
+    }
+});
+printBtn.addEventListener('click', () => window.print());
+function renderExam(exam) {
+    let html = '<div class="a4-page">';
+    html += '<img src="logo.png" class="logo-img" onerror="this.style.display=\'none\'" alt="Logo">';
+    html += '<div class="exam-title">' + esc(exam.title||'') + '</div>';
+    (exam.sections||[]).forEach(section => {
+        html += '<div class="section">';
+        html += '<div class="section-title">' + esc(section.section_title||'') + '</div>';
+        const images = section.images||[];
+        const lines  = (section.text||'').split('\n');
+        const aboveImgs = images.filter(i => i.position==='above');
+        const rightImgs = images.filter(i => i.position==='right');
+        const otherImgs = images.filter(i => i.position!=='above' && i.position!=='right');
+        if (aboveImgs.length > 0) {
+            html += '<div class="above-images">';
+            aboveImgs.forEach(img => { html += '<img src="' + imgSrc(img.suggested_filename) + '" onerror="this.style.display=\'none\'" alt="">'; });
+            html += '</div>';
+        }
+        const numberedLines = lines.filter(l => /^\d+[\.\)]\s/.test(l.trim()));
+        const otherLines    = lines.filter(l => !/^\d+[\.\)]\s/.test(l.trim()) && l.trim()!=='');
+        if (rightImgs.length > 0 && rightImgs.length === numberedLines.length) {
+            numberedLines.forEach((line, idx) => {
+                html += '<div class="question-row"><span class="q-text">' + esc(line) + '</span><img src="' + imgSrc(rightImgs[idx].suggested_filename) + '" class="q-img" onerror="this.style.display=\'none\'" alt=""></div>';
+            });
+            if (otherLines.length > 0) html += '<div class="plain-text" style="margin-top:6px;">' + otherLines.map(esc).join('<br>') + '</div>';
+        } else if (rightImgs.length > 0) {
+            html += '<div class="plain-text">' + lines.map(esc).join('<br>') + '</div>';
+            html += '<div class="above-images" style="margin-top:8px;">';
+            rightImgs.forEach(img => { html += '<img src="' + imgSrc(img.suggested_filename) + '" onerror="this.style.display=\'none\'" alt="">'; });
+            html += '</div>';
+        } else {
+            html += '<div class="plain-text">' + lines.map(esc).join('<br>') + '</div>';
+        }
+        if (otherImgs.length > 0) {
+            html += '<div class="above-images" style="margin-top:8px;">';
+            otherImgs.forEach(img => { html += '<img src="' + imgSrc(img.suggested_filename) + '" onerror="this.style.display=\'none\'" alt="">'; });
+            html += '</div>';
+        }
+        html += '</div>';
+    });
+    html += '<footer>English Time 2 &copy; 2025</footer></div>';
+    container.innerHTML = html;
+}
+function imgSrc(f) { return f ? encodeURI('English time 2/images/' + f + '.jpg') : ''; }
+function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+</script>
+</body>
+</html>
