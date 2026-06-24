@@ -1,89 +1,223 @@
+"""
+ET2_generate_pdf.py
+-------------------
+يولّد ملفات PDF لامتحانات English Time 2
+يستخدم reportlab بدل fpdf (دعم أفضل للخطوط والصور)
+"""
+
 import os
 import json
-from fpdf import FPDF
+from reportlab.lib.pagesizes import A4
+from reportlab.lib.units import mm
+from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+from reportlab.lib import colors
+from reportlab.platypus import (
+    SimpleDocTemplate, Paragraph, Spacer, Image,
+    HRFlowable, PageBreak, KeepTogether
+)
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.ttfonts import TTFont
 
-# ---------- Paths ----------
-book_folder = "English time 2"
-# JSON files are now directly inside English time 2 (not in الاختبارات)
-json_folder = book_folder
-images_folder = os.path.join(book_folder, "images")
-output_folder = os.path.join(book_folder, "output")
-logo_path = "logo.png"
+# ─────────────────────────────────────────────
+# 1. المسارات
+# ─────────────────────────────────────────────
+BOOK_FOLDER    = "English time 2"
+JSON_FOLDER    = BOOK_FOLDER
+IMAGES_FOLDER  = os.path.join(BOOK_FOLDER, "images")
+OUTPUT_FOLDER  = os.path.join(BOOK_FOLDER, "output")
+LOGO_PATH      = "logo.png"
 
-# Create output folder if it doesn't exist
-if not os.path.exists(output_folder):
-    os.makedirs(output_folder)
+os.makedirs(OUTPUT_FOLDER, exist_ok=True)
 
-# ---------- Load all exams ----------
-exams_data = []
-for part in ["A", "B"]:
-    for exam_num in range(1, 5):  # Exams 1 to 4
-        filename = f"ET2_{part}_Exam{exam_num}.json"
-        file_path = os.path.join(json_folder, filename)
-        if os.path.exists(file_path):
-            with open(file_path, "r", encoding="utf-8") as f:
-                data = json.load(f)
-                exams_data.append(data)
-        else:
-            print(f"⚠️ Warning: {filename} not found in {json_folder}!")
+# ─────────────────────────────────────────────
+# 2. الأنماط (Styles)
+# ─────────────────────────────────────────────
+styles = getSampleStyleSheet()
 
-# ---------- Generate PDFs ----------
-for part in ["A", "B"]:
-    # Filter exams for this part only
-    part_exams = [exam for exam in exams_data if f"_{part}_" in exam["test_id"]]
+TITLE_STYLE = ParagraphStyle(
+    "ExamTitle",
+    parent=styles["Title"],
+    fontSize=14,
+    leading=18,
+    textColor=colors.HexColor("#2c3e50"),
+    spaceAfter=10,
+    alignment=1,           # CENTER
+)
 
-    if not part_exams:
-        print(f"No exams found for part {part}. Skipping.")
-        continue
+SECTION_STYLE = ParagraphStyle(
+    "SectionTitle",
+    parent=styles["Heading2"],
+    fontSize=12,
+    leading=15,
+    textColor=colors.HexColor("#007bff"),
+    spaceBefore=8,
+    spaceAfter=4,
+    borderPad=4,
+    borderColor=colors.HexColor("#007bff"),
+    borderWidth=0,
+    leftIndent=6,
+    borderLeftWidth=3,     # خط جانبي أزرق
+)
 
-    pdf = FPDF()
-    pdf.set_auto_page_break(auto=True, margin=15)
+BODY_STYLE = ParagraphStyle(
+    "Body",
+    parent=styles["Normal"],
+    fontSize=11,
+    leading=16,
+    spaceAfter=4,
+    fontName="Helvetica",
+)
 
-    for exam in part_exams:
-        pdf.add_page()
+MISSING_STYLE = ParagraphStyle(
+    "Missing",
+    parent=styles["Normal"],
+    fontSize=9,
+    textColor=colors.red,
+    leading=12,
+)
 
-        # Add logo if exists
-        if os.path.exists(logo_path):
-            pdf.image(logo_path, x=10, y=8, w=30)
-            pdf.ln(18)  # extra space after logo
+# ─────────────────────────────────────────────
+# 3. تحميل ملفات JSON
+# ─────────────────────────────────────────────
+def load_exams():
+    exams = []
+    for part in ["A", "B"]:
+        for num in range(1, 5):
+            filename  = f"ET2_{part}_Exam{num}.json"
+            filepath  = os.path.join(JSON_FOLDER, filename)
+            if os.path.exists(filepath):
+                with open(filepath, "r", encoding="utf-8") as f:
+                    data = json.load(f)
+                    # تأكد من وجود test_id
+                    if "test_id" not in data:
+                        data["test_id"] = f"ET2_{part}_Exam{num}"
+                    exams.append(data)
+                print(f"✅ Loaded: {filename}")
+            else:
+                print(f"⚠️  Not found: {filepath}")
+    return exams
 
-        # Exam title
-        pdf.set_font("Arial", "B", 14)
-        pdf.cell(0, 10, exam["title"], ln=True, align="C")
-        pdf.ln(6)
+# ─────────────────────────────────────────────
+# 4. بناء عناصر صفحة الامتحان
+# ─────────────────────────────────────────────
+def build_exam_story(exam):
+    """يُعيد قائمة Flowables لامتحان واحد."""
+    story = []
 
-        # Sections
-        for section in exam["sections"]:
-            # Section title
-            pdf.set_font("Arial", "B", 12)
-            pdf.cell(0, 10, section["section_title"], ln=True)
-            pdf.ln(2)
+    # ── اللوجو ──────────────────────────────
+    if os.path.exists(LOGO_PATH):
+        logo = Image(LOGO_PATH, width=35*mm, height=35*mm, kind="proportional")
+        logo.hAlign = "CENTER"
+        story.append(logo)
+        story.append(Spacer(1, 4*mm))
 
-            # Section text (English, left-aligned)
-            pdf.set_font("Arial", size=11)
-            pdf.multi_cell(0, 7, section["text"])
-            pdf.ln(3)
+    # ── عنوان الامتحان ───────────────────────
+    title = exam.get("title", exam.get("test_id", "Exam"))
+    story.append(Paragraph(title, TITLE_STYLE))
+    story.append(HRFlowable(width="100%", thickness=1,
+                             color=colors.HexColor("#007bff"), spaceAfter=6))
 
-            # Images (if any)
-            for img_info in section.get("images", []):
-                img_name = img_info.get("suggested_filename", "")
-                if not img_name:
-                    continue
-                img_path = os.path.join(images_folder, f"{img_name}.jpg")
-                if os.path.exists(img_path):
-                    try:
-                        # Place image centered, width 140
-                        pdf.image(img_path, x=35, y=None, w=140)
-                        pdf.ln(4)
-                    except Exception as e:
-                        pdf.cell(0, 10, f"[Error loading image: {img_name}]", ln=True)
-                else:
-                    pdf.cell(0, 10, f"[Image missing: {img_name}]", ln=True)
-            pdf.ln(4)
+    # ── الأقسام ──────────────────────────────
+    for section in exam.get("sections", []):
+        section_elements = []
 
-    # Save the combined PDF for this part
-    output_file = os.path.join(output_folder, f"ET2_Basic_{part}_Exams.pdf")
-    pdf.output(output_file)
-    print(f"✅ Generated: {output_file}")
+        # عنوان القسم
+        sec_title = section.get("section_title", "")
+        section_elements.append(Paragraph(sec_title, SECTION_STYLE))
 
-print("🎉 All exams have been printed successfully!")
+        # نص القسم — كل سطر فقرة مستقلة
+        text = section.get("text", "")
+        for line in text.split("\n"):
+            line = line.strip()
+            if line:
+                # تجنب كسر XML داخل Paragraph
+                safe = (line.replace("&", "&amp;")
+                            .replace("<", "&lt;")
+                            .replace(">", "&gt;"))
+                section_elements.append(Paragraph(safe, BODY_STYLE))
+
+        # الصور
+        for img_info in section.get("images", []):
+            img_name = img_info.get("suggested_filename", "")
+            if not img_name:
+                continue
+
+            # جرّب jpg ثم png
+            img_path = None
+            for ext in [".jpg", ".jpeg", ".png", ".gif"]:
+                candidate = os.path.join(IMAGES_FOLDER, f"{img_name}{ext}")
+                if os.path.exists(candidate):
+                    img_path = candidate
+                    break
+
+            if img_path:
+                try:
+                    img = Image(img_path, width=120*mm, height=60*mm,
+                                kind="proportional")
+                    img.hAlign = "CENTER"
+                    section_elements.append(Spacer(1, 3*mm))
+                    section_elements.append(img)
+                    section_elements.append(Spacer(1, 3*mm))
+                except Exception as e:
+                    section_elements.append(
+                        Paragraph(f"[خطأ في تحميل الصورة: {img_name}] — {e}",
+                                  MISSING_STYLE))
+            else:
+                section_elements.append(
+                    Paragraph(f"[صورة غير موجودة: {img_name}]", MISSING_STYLE))
+
+        # ابقِ عنوان القسم مع أول سطرين معه
+        story.append(KeepTogether(section_elements[:3]))
+        story.extend(section_elements[3:])
+        story.append(Spacer(1, 5*mm))
+
+    return story
+
+# ─────────────────────────────────────────────
+# 5. توليد PDF لكل جزء
+# ─────────────────────────────────────────────
+def generate_pdfs(exams):
+    for part in ["A", "B"]:
+        part_exams = [e for e in exams
+                      if f"_{part}_" in e.get("test_id", "")]
+
+        if not part_exams:
+            print(f"⚠️  لا توجد امتحانات للجزء {part}. تخطّي.")
+            continue
+
+        output_file = os.path.join(OUTPUT_FOLDER, f"ET2_Basic_{part}_Exams.pdf")
+
+        doc = SimpleDocTemplate(
+            output_file,
+            pagesize=A4,
+            leftMargin=15*mm,
+            rightMargin=15*mm,
+            topMargin=15*mm,
+            bottomMargin=20*mm,
+        )
+
+        full_story = []
+        for i, exam in enumerate(part_exams):
+            full_story.extend(build_exam_story(exam))
+            if i < len(part_exams) - 1:
+                full_story.append(PageBreak())
+
+        doc.build(full_story)
+        print(f"✅ Generated: {output_file}")
+
+# ─────────────────────────────────────────────
+# 6. التنفيذ
+# ─────────────────────────────────────────────
+if __name__ == "__main__":
+    print("=" * 50)
+    print("  English Time 2 — PDF Generator")
+    print("=" * 50)
+
+    exams = load_exams()
+
+    if not exams:
+        print("❌ لم يُعثر على أي ملفات JSON. تأكد من المسارات.")
+    else:
+        print(f"\n📚 تم تحميل {len(exams)} امتحان. جاري التوليد...\n")
+        generate_pdfs(exams)
+        print("\n🎉 اكتمل توليد جميع ملفات PDF!")
