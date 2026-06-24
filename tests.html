@@ -105,8 +105,8 @@ function renderExam(exam) {
             aboveImgs.forEach(img => { html += '<img src="' + imgSrc(img.suggested_filename) + '" onerror="this.style.display=\'none\'" alt="">'; });
             html += '</div>';
         }
-        const numberedLines = lines.filter(l => /^\d+[\.\)]\s/.test(l.trim()));
-        const otherLines    = lines.filter(l => !/^\d+[\.\)]\s/.test(l.trim()) && l.trim()!=='');
+        const numberedLines = lines.filter(l => /^\d+[\.\)]/.test(l.trim()));
+        const otherLines    = lines.filter(l => !/^\d+[\.\)]/.test(l.trim()) && l.trim()!=='');
         if (rightImgs.length > 0 && rightImgs.length === numberedLines.length) {
             numberedLines.forEach((line, idx) => {
                 html += '<div class="question-row"><span class="q-text">' + esc(line) + '</span><img src="' + imgSrc(rightImgs[idx].suggested_filename) + '" class="q-img" onerror="this.style.display=\'none\'" alt=""></div>';
