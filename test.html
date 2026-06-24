@@ -14,25 +14,90 @@
             align-items: center;
             padding: 20px;
         }
-        .no-print { margin-bottom: 15px; text-align: center; }
-        .no-print select, .no-print button {
-            padding: 10px 20px;
-            margin: 5px;
-            font-size: 1rem;
+
+        /* ===== شريط التحكم ===== */
+        .no-print {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 16px 24px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 210mm;
+        }
+
+        .no-print label {
+            font-weight: bold;
+            color: #555;
+            font-size: 0.9rem;
+        }
+
+        .no-print select {
+            padding: 8px 14px;
+            font-size: 0.95rem;
             border-radius: 8px;
-            border: 1px solid #aaa;
+            border: 1px solid #ccc;
             background: white;
             cursor: pointer;
+            color: #333;
         }
-        .no-print button {
-            background: #007bff;
-            color: white;
-            border: none;
-            font-weight: bold;
-        }
-        .no-print button:hover { background: #0056b3; }
-        .no-print button:disabled { background: #6c757d; cursor: not-allowed; }
 
+        .no-print select:focus { outline: none; border-color: #007bff; }
+
+        .btn {
+            padding: 9px 20px;
+            font-size: 0.95rem;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+        .btn-primary { background: #007bff; color: white; }
+        .btn-primary:hover { background: #0056b3; }
+        .btn-primary:disabled { background: #6c757d; cursor: not-allowed; }
+        .btn-secondary { background: #f0f0f0; color: #333; border: 1px solid #ccc; }
+        .btn-secondary:hover { background: #e0e0e0; }
+        .btn-print { background: #28a745; color: white; }
+        .btn-print:hover { background: #1e7e34; }
+
+        /* زر اختيار الملف مخصص */
+        .file-label {
+            display: inline-block;
+            padding: 9px 16px;
+            font-size: 0.9rem;
+            border-radius: 8px;
+            border: 2px dashed #007bff;
+            background: #f0f7ff;
+            color: #007bff;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+        .file-label:hover { background: #ddeeff; }
+        #jsonFileInput { display: none; }
+
+        .file-name {
+            font-size: 0.82rem;
+            color: #666;
+            max-width: 200px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .divider {
+            width: 1px;
+            height: 30px;
+            background: #ddd;
+            margin: 0 4px;
+        }
+
+        /* ===== صفحة A4 ===== */
         .a4-page {
             width: 210mm;
             min-height: 297mm;
@@ -116,150 +181,236 @@
             margin-top: 20px;
         }
 
+        /* رسالة المساعدة */
+        .help-box {
+            width: 210mm;
+            background: #fff8e1;
+            border: 1px solid #ffc107;
+            border-radius: 10px;
+            padding: 14px 20px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            color: #555;
+            line-height: 1.7;
+        }
+        .help-box strong { color: #e65c00; }
+        .help-box code {
+            background: #f0f0f0;
+            padding: 1px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.85rem;
+        }
+
+        #statusMsg {
+            width: 210mm;
+            text-align: center;
+            padding: 16px;
+            font-size: 0.95rem;
+            color: #555;
+        }
+
         @media print {
             body { background: white; padding: 0; }
-            .no-print { display: none; }
-            .a4-page { box-shadow: none; margin: 0; padding: 10mm; page-break-after: always; }
+            .no-print, .help-box, #statusMsg { display: none !important; }
+            .a4-page {
+                box-shadow: none;
+                margin: 0;
+                padding: 10mm;
+                page-break-after: always;
+            }
         }
     </style>
 </head>
 <body>
+
+    <!-- شريط التحكم -->
     <div class="no-print">
-        <select id="partSelect">
-            <option value="A">Basic 2A</option>
-            <option value="B">Basic 2B</option>
-        </select>
-        <select id="examSelect">
-            <option value="1">Exam 1</option>
-            <option value="2">Exam 2</option>
-            <option value="3">Exam 3</option>
-            <option value="4">Exam 4</option>
-        </select>
-        <button id="showExamBtn">Show Exam</button>
-        <button id="printBtn">🖨️ Print</button>
+        <!-- اختيار ملف JSON -->
+        <label class="file-label" for="jsonFileInput">📂 اختر ملف JSON</label>
+        <input type="file" id="jsonFileInput" accept=".json">
+        <span class="file-name" id="fileNameDisplay">لم يُختر ملف</span>
+
+        <div class="divider"></div>
+
+        <!-- اختيار اللوجو -->
+        <label class="file-label" for="logoFileInput" style="font-size:0.82rem; padding:7px 12px;">🖼️ لوجو (اختياري)</label>
+        <input type="file" id="logoFileInput" accept="image/*" style="display:none">
+
+        <div class="divider"></div>
+
+        <button class="btn btn-primary" id="showExamBtn" disabled>▶ عرض الامتحان</button>
+        <button class="btn btn-print" id="printBtn" disabled>🖨️ طباعة</button>
     </div>
 
-    <div id="examContainer">
-        <p style="text-align:center; color:#6c757d;">Select an exam and click "Show Exam".</p>
+    <!-- رسالة المساعدة -->
+    <div class="help-box" id="helpBox">
+        <strong>📌 طريقة الاستخدام:</strong><br>
+        1. اضغط <strong>"اختر ملف JSON"</strong> واختر الملف المطلوب (مثل <code>ET2_A_Exam1.json</code>)<br>
+        2. اضغط <strong>"عرض الامتحان"</strong><br>
+        3. للطباعة اضغط <strong>"طباعة"</strong><br>
+        <br>
+        ✅ يعمل مباشرة بدون سيرفر — فقط افتح هذا الملف في المتصفح.
     </div>
+
+    <div id="statusMsg">اختر ملف JSON لعرض الامتحان.</div>
+    <div id="examContainer"></div>
 
     <script>
-        const partSelect = document.getElementById('partSelect');
-        const examSelect = document.getElementById('examSelect');
-        const showBtn = document.getElementById('showExamBtn');
-        const printBtn = document.getElementById('printBtn');
-        const container = document.getElementById('examContainer');
+        const jsonInput    = document.getElementById('jsonFileInput');
+        const logoInput    = document.getElementById('logoFileInput');
+        const showBtn      = document.getElementById('showExamBtn');
+        const printBtn     = document.getElementById('printBtn');
+        const container    = document.getElementById('examContainer');
+        const fileNameDisp = document.getElementById('fileNameDisplay');
+        const statusMsg    = document.getElementById('statusMsg');
+        const helpBox      = document.getElementById('helpBox');
 
-        // ✅ المسار الصحيح مع تشفير المسافات تلقائياً
-        function getJSONPath(part, num) {
-            const folder = 'English time 2';  // اسم المجلد الحقيقي
-            const filename = `ET2_${part}_Exam${num}.json`;
-            // encodeURI يحول المسافات إلى %20 بشكل آمن
-            return encodeURI(`${folder}/${filename}`);
-        }
+        let loadedExam   = null;
+        let logoDataURL  = null;
 
-        function getImagePath(filename) {
-            const folder = 'English time 2/images';
-            return encodeURI(`${folder}/${filename}.jpg`);
-        }
+        // ── اختيار ملف JSON ──────────────────────────────────────
+        jsonInput.addEventListener('change', () => {
+            const file = jsonInput.files[0];
+            if (!file) return;
 
-        async function loadAndRender() {
-            const part = partSelect.value;
-            const num = examSelect.value;
-
+            fileNameDisp.textContent = file.name;
+            statusMsg.textContent = '⏳ جاري قراءة الملف...';
             showBtn.disabled = true;
-            showBtn.textContent = 'Loading...';
-            container.innerHTML = '<p style="text-align:center;">Loading exam, please wait...</p>';
 
-            const url = getJSONPath(part, num);
-            console.log('Fetching:', url);
-
-            try {
-                const response = await fetch(url);
-                if (!response.ok) {
-                    const statusText = `${response.status} ${response.statusText}`;
-                    throw new Error(`HTTP ${statusText} — ${url}`);
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                try {
+                    loadedExam = JSON.parse(e.target.result);
+                    statusMsg.textContent = `✅ تم تحميل: ${loadedExam.title || file.name}`;
+                    showBtn.disabled = false;
+                    helpBox.style.display = 'none';
+                } catch (err) {
+                    statusMsg.innerHTML = `<span style="color:red">❌ خطأ في قراءة JSON: ${err.message}</span>`;
+                    loadedExam = null;
                 }
-                const exam = await response.json();
-                console.log('Exam loaded successfully:', exam.title);
-                renderExam(exam);
-            } catch (error) {
-                console.error('Fetch error:', error);
-                container.innerHTML = `
-                    <p style="color:red; text-align:center;">
-                        ❌ Failed to load exam.<br>
-                        <small>Path: ${url}</small><br>
-                        <small>Error: ${error.message}</small>
-                    </p>`;
-            } finally {
-                showBtn.disabled = false;
-                showBtn.textContent = 'Show Exam';
-            }
-        }
+            };
+            reader.onerror = () => {
+                statusMsg.innerHTML = `<span style="color:red">❌ فشل قراءة الملف.</span>`;
+            };
+            reader.readAsText(file, 'UTF-8');
+        });
 
+        // ── اختيار ملف اللوجو (اختياري) ─────────────────────────
+        logoInput.addEventListener('change', () => {
+            const file = logoInput.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = (e) => { logoDataURL = e.target.result; };
+            reader.readAsDataURL(file);
+        });
+
+        // ── عرض الامتحان ─────────────────────────────────────────
+        showBtn.addEventListener('click', () => {
+            if (!loadedExam) return;
+            renderExam(loadedExam);
+            printBtn.disabled = false;
+            statusMsg.style.display = 'none';
+        });
+
+        // ── طباعة ────────────────────────────────────────────────
+        printBtn.addEventListener('click', () => window.print());
+
+        // ── دالة الرسم ───────────────────────────────────────────
         function renderExam(exam) {
             let html = `<div class="a4-page">`;
-            html += `<img src="logo.png" class="logo-img" onerror="this.style.display='none'" alt="Logo">`;
-            html += `<div class="exam-title">${exam.title}</div>`;
 
-            exam.sections.forEach(section => {
+            // اللوجو: إذا اختار المستخدم ملف يستخدمه، وإلا يحاول logo.png
+            const logoSrc = logoDataURL || 'logo.png';
+            html += `<img src="${logoSrc}" class="logo-img" onerror="this.style.display='none'" alt="Logo">`;
+
+            html += `<div class="exam-title">${escapeHTML(exam.title || '')}</div>`;
+
+            (exam.sections || []).forEach(section => {
                 html += `<div class="section">`;
-                html += `<div class="section-title">${section.section_title}</div>`;
+                html += `<div class="section-title">${escapeHTML(section.section_title || '')}</div>`;
 
                 const images = section.images || [];
-                const allLines = section.text.split('\n');
+                const allLines = (section.text || '').split('\n');
 
-                // الصور التي مكانها "above"
+                // صور فوق القسم
                 const aboveImg = images.find(img => img.position === 'above');
                 if (aboveImg) {
-                    html += `<img src="${getImagePath(aboveImg.suggested_filename)}" class="section-image-above" onerror="this.style.display='none'" alt="">`;
+                    html += `<img src="${imgPath(aboveImg.suggested_filename)}"
+                                  class="section-image-above"
+                                  onerror="this.style.display='none'" alt="">`;
                 }
 
                 const remainingImages = images.filter(img => img.position !== 'above');
 
-                // استخراج الأسطر المرقمة
+                // فصل الأسطر المرقمة عن غيرها
                 const numberedLines = [];
                 const otherLines = [];
                 allLines.forEach(line => {
-                    if (/^\d+[\.\s]/.test(line.trim())) {
+                    if (/^\d+[\.\)]\s/.test(line.trim())) {
                         numberedLines.push(line);
                     } else if (line.trim() !== '') {
                         otherLines.push(line);
                     }
                 });
 
-                // وصل الصور بالأسطر المرقمة إذا تطابق العدد
-                if (remainingImages.length === numberedLines.length && numberedLines.length > 0) {
+                // إذا تطابق عدد الصور مع الأسطر المرقمة → وصّلهم
+                if (remainingImages.length > 0 &&
+                    remainingImages.length === numberedLines.length) {
                     numberedLines.forEach((line, idx) => {
-                        html += `<div class="question-line">`;
-                        html += `<span class="question-text">${line}</span>`;
-                        html += `<img src="${getImagePath(remainingImages[idx].suggested_filename)}" class="question-image" onerror="this.style.display='none'" alt="">`;
-                        html += `</div>`;
+                        html += `<div class="question-line">
+                            <span class="question-text">${escapeHTML(line)}</span>
+                            <img src="${imgPath(remainingImages[idx].suggested_filename)}"
+                                 class="question-image"
+                                 onerror="this.style.display='none'" alt="">
+                        </div>`;
                     });
                     if (otherLines.length > 0) {
-                        html += `<div class="question-text" style="margin-top:6px;">${otherLines.join('<br>')}</div>`;
+                        html += `<div class="question-text" style="margin-top:6px;">
+                                    ${otherLines.map(escapeHTML).join('<br>')}
+                                 </div>`;
                     }
                 } else {
-                    html += `<div class="question-text">${section.text.replace(/\n/g, '<br>')}</div>`;
+                    // عرض النص العادي
+                    html += `<div class="question-text">
+                                ${allLines.map(escapeHTML).join('<br>')}
+                             </div>`;
                     if (remainingImages.length > 0) {
-                        html += `<div style="display:flex; gap:8px; margin-top:6px; flex-wrap:wrap;">`;
+                        html += `<div style="display:flex;gap:8px;margin-top:6px;flex-wrap:wrap;">`;
                         remainingImages.forEach(img => {
-                            html += `<img src="${getImagePath(img.suggested_filename)}" class="question-image" onerror="this.style.display='none'" alt="">`;
+                            html += `<img src="${imgPath(img.suggested_filename)}"
+                                         class="question-image"
+                                         onerror="this.style.display='none'" alt="">`;
                         });
                         html += `</div>`;
                     }
                 }
 
-                html += `</div>`;
+                html += `</div>`; // .section
             });
 
             html += `<footer>English Time 2 © 2025</footer>`;
-            html += `</div>`;
+            html += `</div>`; // .a4-page
+
             container.innerHTML = html;
         }
 
-        showBtn.addEventListener('click', loadAndRender);
-        printBtn.addEventListener('click', () => window.print());
+        // ── مسار الصور ───────────────────────────────────────────
+        // الصور بجانب HTML في مجلد: English time 2/images/
+        function imgPath(filename) {
+            if (!filename) return '';
+            // دعم امتدادات متعددة — نحاول jpg أولاً، وإذا فشلت onerror تخفيها
+            return encodeURI(`English time 2/images/${filename}.jpg`);
+        }
+
+        // ── تأمين HTML ────────────────────────────────────────────
+        function escapeHTML(str) {
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;');
+        }
     </script>
 </body>
 </html>
