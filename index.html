@@ -3,85 +3,343 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>English Time - Audio Player</title>
-    <link rel="stylesheet" href="style.css">
+    <title>English Time 2 – Audio Player</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #e9ecef;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background: #ffffff;
+            padding: 30px 25px;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .logo {
+            max-width: 160px;
+            height: auto;
+            margin: 0 auto 15px;
+            display: block;
+        }
+
+        h2 {
+            color: #2c3e50;
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            text-align: right;
+            font-weight: bold;
+            color: #495057;
+            margin-bottom: 5px;
+            margin-top: 10px;
+        }
+
+        select {
+            width: 100%;
+            padding: 12px 15px;
+            margin: 8px 0 12px 0;
+            font-size: 1rem;
+            border-radius: 8px;
+            border: 1px solid #ced4da;
+            background: #fff;
+            color: #333;
+            cursor: pointer;
+        }
+        select:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 0 3px rgba(0,123,255,0.25);
+        }
+
+        /* ── أزرار ── */
+        .btn {
+            width: 100%;
+            padding: 12px 15px;
+            margin: 6px 0;
+            font-size: 1rem;
+            border-radius: 8px;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .btn:hover { transform: translateY(-2px); }
+        .btn:active { transform: translateY(0); }
+
+        .btn-file {
+            background: #f0f7ff;
+            color: #007bff;
+            border: 2px dashed #007bff;
+        }
+        .btn-file:hover { background: #ddeeff; }
+
+        .btn-play {
+            background: #28a745;
+            color: white;
+            margin-top: 5px;
+        }
+        .btn-play:hover { background: #218838; }
+        .btn-play:disabled { background: #6c757d; cursor: not-allowed; transform: none; }
+
+        .btn-tts {
+            background: #6f42c1;
+            color: white;
+        }
+        .btn-tts:hover { background: #5a32a3; }
+
+        /* زر الملف المخفي */
+        #audioFileInput { display: none; }
+
+        .file-info {
+            font-size: 0.82rem;
+            color: #666;
+            margin: 4px 0 10px;
+            min-height: 18px;
+        }
+
+        /* ── مشغل الصوت ── */
+        audio {
+            width: 100%;
+            margin-top: 15px;
+            border-radius: 8px;
+            display: none;
+        }
+        audio.visible { display: block; }
+
+        /* ── رسائل الحالة ── */
+        #progress {
+            margin-top: 15px;
+            font-weight: bold;
+            color: #495057;
+            font-size: 0.95rem;
+        }
+
+        .status-msg {
+            margin-top: 12px;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            display: none;
+        }
+        .status-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+        .status-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: block;
+        }
+        .status-info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+            display: block;
+        }
+
+        /* ── فاصل ── */
+        .divider {
+            border: none;
+            border-top: 1px solid #e0e0e0;
+            margin: 18px 0;
+        }
+
+        .section-label {
+            font-size: 0.78rem;
+            color: #aaa;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 6px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <img src="logo.png" alt="English Zone Logo" class="logo" onerror="this.style.display='none'">
-        
-        <h2>🎧 English Time 2 – Audio Player</h2>
-        
-        <label for="partSelect">Choose section (Basic):</label>
-        <select id="partSelect">
-            <option value="A">Basic 2A (Units 1-6)</option>
-            <option value="B">Basic 2B (Units 7-12)</option>
-        </select>
+<div class="container">
 
-        <label for="examSelect">Choose exam:</label>
-        <select id="examSelect">
-            <!-- populated by JavaScript -->
-        </select>
+    <img src="logo.png" alt="English Zone Logo" class="logo" onerror="this.style.display='none'">
+    <h2>🎧 English Time 2 – Audio Player</h2>
 
-        <button class="btn-play" onclick="playAudio()">🔊 Play Audio for Students</button>
-        
-        <audio id="audioPlayer" controls>
-            <source id="audioSource" src="" type="audio/mpeg">
-        </audio>
+    <!-- اختيار القسم والامتحان -->
+    <label for="partSelect">Choose section (Basic):</label>
+    <select id="partSelect">
+        <option value="A">Basic 2A (Units 1–6)</option>
+        <option value="B">Basic 2B (Units 7–12)</option>
+    </select>
 
-        <div id="progress">Ready. Choose an exam and press Play.</div>
-        <div id="statusMsg" class="status-msg"></div>
-    </div>
+    <label for="examSelect">Choose exam:</label>
+    <select id="examSelect"></select>
 
-    <script>
-        const examsList = {
-            "A": ["Exam1", "Exam2", "Exam3", "Exam4"],
-            "B": ["Exam5", "Exam6", "Exam7", "Exam8"]
+    <hr class="divider">
+
+    <!-- ── الطريقة 1: تحميل ملف صوتي ── -->
+    <div class="section-label">🎵 Play Audio File</div>
+
+    <input type="file" id="audioFileInput" accept="audio/*">
+    <label class="btn btn-file" for="audioFileInput">📂 اختر ملف صوتي (MP3)</label>
+    <div class="file-info" id="fileInfo">لم يُختر ملف — اختر الملف المناسب للامتحان</div>
+
+    <button class="btn btn-play" id="playBtn" disabled>▶ تشغيل الصوت للطلاب</button>
+
+    <audio id="audioPlayer" controls></audio>
+
+    <hr class="divider">
+
+    <!-- ── الطريقة 2: Text-to-Speech ── -->
+    <div class="section-label">🗣️ Text-to-Speech (بديل)</div>
+    <button class="btn btn-tts" id="ttsBtn">🗣️ تشغيل بالصوت الاصطناعي</button>
+
+    <!-- حالة التشغيل -->
+    <div id="progress">جاهز — اختر الامتحان وحمّل الملف الصوتي.</div>
+    <div id="statusMsg" class="status-msg"></div>
+
+</div>
+
+<script>
+    const examsList = {
+        A: ['Exam1','Exam2','Exam3','Exam4'],
+        B: ['Exam5','Exam6','Exam7','Exam8']
+    };
+
+    const partSelect   = document.getElementById('partSelect');
+    const examSelect   = document.getElementById('examSelect');
+    const audioPlayer  = document.getElementById('audioPlayer');
+    const audioFileIn  = document.getElementById('audioFileInput');
+    const fileInfo     = document.getElementById('fileInfo');
+    const playBtn      = document.getElementById('playBtn');
+    const ttsBtn       = document.getElementById('ttsBtn');
+    const progress     = document.getElementById('progress');
+    const statusMsg    = document.getElementById('statusMsg');
+
+    // ── تحديث قائمة الامتحانات ─────────────────────────────────
+    function updateExams() {
+        const part = partSelect.value;
+        examSelect.innerHTML = '';
+        examsList[part].forEach((exam, i) => {
+            const opt = document.createElement('option');
+            opt.value = exam;
+            opt.textContent = `Exam ${i + 1}`;
+            examSelect.appendChild(opt);
+        });
+        progress.textContent = `Loaded Basic 2${part}`;
+        setStatus('', '');
+        // إعادة ضبط المشغل عند تغيير القسم
+        audioPlayer.classList.remove('visible');
+        audioPlayer.src = '';
+        playBtn.disabled = !audioFileIn.files.length;
+    }
+
+    // ── اختيار الملف الصوتي (File API — يعمل بدون سيرفر) ──────
+    audioFileIn.addEventListener('change', () => {
+        const file = audioFileIn.files[0];
+        if (!file) return;
+
+        const expectedName = getExpectedFilename();
+        fileInfo.textContent = `📄 ${file.name}`;
+
+        // تلميح إذا اسم الملف ما يطابق المتوقع
+        if (file.name.toLowerCase() !== expectedName.toLowerCase()) {
+            setStatus(`تنبيه: الملف المتوقع هو "${expectedName}" — تأكد من الاختيار الصحيح.`, 'info');
+        } else {
+            setStatus('', '');
+        }
+
+        // تحميل الملف كـ Object URL
+        const url = URL.createObjectURL(file);
+        audioPlayer.src = url;
+        audioPlayer.classList.add('visible');
+        playBtn.disabled = false;
+        progress.textContent = `تم تحميل: ${file.name}`;
+    });
+
+    // ── زر التشغيل ───────────────────────────────────────────────
+    playBtn.addEventListener('click', () => {
+        if (!audioPlayer.src) return;
+        const part = partSelect.value;
+        const exam = examSelect.value;
+
+        audioPlayer.play()
+            .then(() => {
+                setStatus(`🎵 Now playing: Basic 2${part} – ${exam}`, 'success');
+                progress.textContent = 'Playing...';
+            })
+            .catch(err => {
+                setStatus(`❌ خطأ في التشغيل: ${err.message}`, 'error');
+            });
+    });
+
+    // ── Text-to-Speech ────────────────────────────────────────────
+    ttsBtn.addEventListener('click', () => {
+        const part = partSelect.value;
+        const exam = examSelect.value;
+        const examNum = examSelect.selectedIndex + 1;
+
+        if (!window.speechSynthesis) {
+            setStatus('❌ المتصفح لا يدعم Text-to-Speech.', 'error');
+            return;
+        }
+
+        speechSynthesis.cancel(); // إيقاف أي كلام سابق
+        const text = `Listening test. Basic 2 ${part}. Exam ${examNum}. Please listen carefully.`;
+        const utt = new SpeechSynthesisUtterance(text);
+        utt.lang  = 'en-US';
+        utt.rate  = 0.85;
+        utt.pitch = 1;
+
+        utt.onstart = () => {
+            setStatus(`🗣️ Text-to-Speech: Basic 2${part} – ${exam}`, 'info');
+            progress.textContent = 'Speaking...';
         };
+        utt.onend = () => { progress.textContent = 'Done.'; };
+        utt.onerror = () => { setStatus('❌ فشل Text-to-Speech.', 'error'); };
 
-        const partSelect = document.getElementById('partSelect');
-        const examSelect = document.getElementById('examSelect');
-        const audioPlayer = document.getElementById('audioPlayer');
-        const audioSource = document.getElementById('audioSource');
-        const statusMsg = document.getElementById('statusMsg');
+        speechSynthesis.speak(utt);
+    });
 
-        function updateExams() {
-            const part = partSelect.value;
-            examSelect.innerHTML = '';
-            examsList[part].forEach((exam, index) => {
-                const option = document.createElement('option');
-                option.value = exam;
-                option.innerText = `Exam ${index + 1}`;
-                examSelect.appendChild(option);
-            });
-            document.getElementById('progress').innerText = `Loaded Basic 2${part}`;
+    // ── اسم الملف المتوقع ─────────────────────────────────────────
+    function getExpectedFilename() {
+        const part = partSelect.value;
+        const exam = examSelect.value;
+        return `ET2_${part}_${exam}.mp3`;
+    }
+
+    // ── رسائل الحالة ──────────────────────────────────────────────
+    function setStatus(msg, type) {
+        statusMsg.textContent = msg;
+        statusMsg.className = 'status-msg' + (type ? ` status-${type}` : '');
+    }
+
+    // ── تهيئة ─────────────────────────────────────────────────────
+    updateExams();
+    partSelect.addEventListener('change', updateExams);
+    examSelect.addEventListener('change', () => {
+        if (audioFileIn.files.length) {
+            setStatus(`تأكد أن الملف المحمّل هو "${getExpectedFilename()}"`, 'info');
         }
-
-        function playAudio() {
-            const part = partSelect.value;
-            const exam = examSelect.value;
-            const audioFile = `English time 2/audio/ET2_${part}_${exam}.mp3`;
-            audioSource.src = audioFile;
-            audioPlayer.load();
-
-            statusMsg.className = 'status-msg';
-            document.getElementById('progress').innerText = "Loading audio...";
-
-            audioPlayer.play().then(() => {
-                statusMsg.className = 'status-msg status-success';
-                statusMsg.innerText = `🎵 Now playing: Basic 2${part} - ${exam}`;
-            }).catch(() => {
-                statusMsg.className = 'status-msg status-error';
-                statusMsg.innerText = "Audio file not found. Using text-to-speech instead.";
-                const utterance = new SpeechSynthesisUtterance(`Listening test for Basic 2 ${part}, Exam ${exam}`);
-                utterance.lang = 'en-US';
-                utterance.rate = 0.9;
-                speechSynthesis.speak(utterance);
-            });
-        }
-
-        updateExams();
-        partSelect.addEventListener('change', updateExams);
-    </script>
+    });
+</script>
 </body>
 </html>
